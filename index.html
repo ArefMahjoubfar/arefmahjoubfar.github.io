@@ -21,6 +21,7 @@
       --chip-border: rgba(255,255,255,0.04);
       --glass-bg: rgba(10,12,14,0.46);
       --glass-border: rgba(255,255,255,0.06);
+      --hover-ease: cubic-bezier(.2,.9,.2,1);
     }
 
     /* Basic reset */
@@ -38,7 +39,7 @@
       color:#fff;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-      /* IMPORTANT: use normal flow (not flex) to ensure scrolling works correctly */
+      /* normal flow (not flex) so scrolling works */
       display:block;
     }
 
@@ -55,8 +56,8 @@
     .glass-wrap {
       position:relative;
       z-index:2;
-      max-width:980px;              /* slightly narrower than before */
-      margin:48px auto 80px;       /* centered with space above/below */
+      max-width:980px;
+      margin:48px auto 80px;
       border-radius:16px;
       padding:1.25rem;
       background: var(--glass-bg);
@@ -64,7 +65,6 @@
       box-shadow: 0 18px 40px rgba(2,6,10,0.55);
       backdrop-filter: blur(10px) saturate(120%);
       -webkit-backdrop-filter: blur(10px) saturate(120%);
-      /* allow overflow so nothing is clipped */
       overflow: visible;
     }
 
@@ -116,6 +116,19 @@
       border-radius:999px;
       font-weight:700;
       font-size:0.88rem;
+
+      /* interaction */
+      transition: transform 180ms var(--hover-ease), box-shadow 180ms var(--hover-ease), background-color 180ms var(--hover-ease), border-color 180ms var(--hover-ease);
+      transform-origin:center center;
+      will-change: transform, box-shadow;
+    }
+    .chip:hover,
+    .chip:focus-visible {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 10px 24px rgba(28,180,149,0.08);
+      border-color: rgba(28,180,149,0.18);
+      background: linear-gradient(180deg, rgba(28,180,149,0.03), rgba(255,255,255,0.01));
+      outline: none;
     }
 
     /* Projects grid */
@@ -134,7 +147,7 @@
       display:flex;
       flex-direction:column;
       gap:0.75rem;
-      transition: transform 200ms cubic-bezier(.2,.9,.2,1), box-shadow 200ms ease, border-color 200ms ease;
+      transition: transform 200ms var(--hover-ease), box-shadow 200ms ease, border-color 200ms ease;
       min-height:150px;
     }
     .card:hover{
@@ -149,12 +162,62 @@
     .card-title{ font-weight:700; font-size:1.02rem; color:#fff; }
     .card-desc{ color:var(--muted); font-size:0.92rem; line-height:1.5; flex:1; }
     .card-tags{ display:flex; gap:0.45rem; flex-wrap:wrap; margin-top:0.45rem; }
-    .card-tag{ background:transparent; border:1px solid rgba(255,255,255,0.06); padding:0.28rem 0.55rem; border-radius:8px; font-weight:700; font-size:0.82rem; color:rgba(255,255,255,0.9); }
+    .card-tag{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      padding:0.28rem 0.55rem;
+      border-radius:8px;
+      font-weight:700;
+      font-size:0.82rem;
+      color:rgba(255,255,255,0.9);
+
+      transition: transform 180ms var(--hover-ease), background-color 180ms var(--hover-ease), border-color 180ms var(--hover-ease), box-shadow 180ms var(--hover-ease);
+      will-change: transform, box-shadow;
+    }
+    .card-tag:hover,
+    .card-tag:focus-visible {
+      transform: translateY(-3px) scale(1.02);
+      background: rgba(28,180,149,0.03);
+      border-color: rgba(28,180,149,0.16);
+      box-shadow: 0 8px 20px rgba(28,180,149,0.06);
+      outline: none;
+    }
 
     /* contact */
     .contact { display:flex; flex-direction:column; gap:0.6rem; align-items:center; text-align:center; }
     .contact .links{ display:flex; gap:0.6rem; flex-wrap:wrap; justify-content:center; }
-    .contact a.cta{ padding:0.55rem 0.85rem; background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.045); color:#fff; border-radius:8px; font-weight:700; display:inline-flex; gap:0.5rem; align-items:center; }
+    .contact a.cta{
+      padding:0.55rem 0.85rem;
+      background: rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.045);
+      color:#fff;
+      border-radius:8px;
+      font-weight:700;
+      display:inline-flex;
+      gap:0.5rem;
+      align-items:center;
+
+      /* interaction */
+      transition: transform 200ms var(--hover-ease), box-shadow 200ms var(--hover-ease), background-color 200ms var(--hover-ease), border-color 200ms var(--hover-ease);
+      will-change: transform, box-shadow;
+    }
+    .contact a.cta:hover,
+    .contact a.cta:focus-visible {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(28,180,149,0.10);
+      border-color: rgba(28,180,149,0.18);
+      background: linear-gradient(180deg, rgba(28,180,149,0.04), rgba(255,255,255,0.01));
+      outline: none;
+    }
+
+    /* keyboard-visible focus */
+    .chip:focus-visible,
+    .card-tag:focus-visible,
+    .contact a.cta:focus-visible,
+    .card:focus-within {
+      box-shadow: 0 10px 28px rgba(28,180,149,0.10);
+      outline-offset: 2px;
+    }
 
     footer.footer { margin-top:1rem; color: rgba(255,255,255,0.52); font-size:0.95rem; text-align:center; padding:0.8rem 0 1.2rem; }
 
@@ -167,10 +230,11 @@
       .hero{ margin-top:6px; }
       .hero h1{ font-size:1.5rem; }
       .card{ min-height:auto; }
+      .chip, .card-tag, .contact a.cta { transform:none; } /* avoid translation crowding on small screens */
     }
 
-    /* accessibility focus */
-    .card:focus-within{ outline:3px solid rgba(28,180,149,0.12); }
+    /* accessibility fallback for keyboard users */
+    .chip, .card-tag, .contact a.cta { cursor: pointer; }
   </style>
 </head>
 <body>
@@ -212,11 +276,11 @@
         </div>
 
         <div class="keywords" style="margin-top:0.6rem;">
-          <span class="chip">Medical AI</span>
-          <span class="chip">Computer Vision</span>
-          <span class="chip">LLMs</span>
-          <span class="chip">Uncertainty</span>
-          <span class="chip">PyTorch</span>
+          <button class="chip" type="button">Medical AI</button>
+          <button class="chip" type="button">Computer Vision</button>
+          <button class="chip" type="button">LLMs</button>
+          <button class="chip" type="button">Uncertainty</button>
+          <button class="chip" type="button">PyTorch</button>
         </div>
       </section>
 
@@ -238,9 +302,9 @@
               Trained and evaluated lightweight CNNs (ResNet-18) on a year-collected dataset of bone marrow aspiration and peripheral blood smear images. Emphasis on reproducible pipelines and clinically relevant evaluation metrics.
             </div>
             <div class="card-tags" aria-hidden="false">
-              <span class="card-tag">ResNet-18</span>
-              <span class="card-tag">Segmentation</span>
-              <span class="card-tag">DeepLab v3</span>
+              <button class="card-tag" type="button">ResNet-18</button>
+              <button class="card-tag" type="button">Segmentation</button>
+              <button class="card-tag" type="button">DeepLab v3</button>
             </div>
           </article>
 
@@ -257,9 +321,9 @@
               Research on calibrating and quantifying uncertainty in large language models used for clinical extraction and decision support — combining log-prob analyses, SHAP explainers, and calibration metrics.
             </div>
             <div class="card-tags" aria-hidden="false">
-              <span class="card-tag">LLMs</span>
-              <span class="card-tag">SHAP</span>
-              <span class="card-tag">Calibration</span>
+              <button class="card-tag" type="button">LLMs</button>
+              <button class="card-tag" type="button">SHAP</button>
+              <button class="card-tag" type="button">Calibration</button>
             </div>
           </article>
 
@@ -276,9 +340,9 @@
               Standardized preprocessing, finetuning pipelines, and evaluation scripts aimed to make experiments repeatable and shareable. Focus on clear notebooks and open-science-friendly licenses.
             </div>
             <div class="card-tags" aria-hidden="false">
-              <span class="card-tag">PyTorch</span>
-              <span class="card-tag">Notebooks</span>
-              <span class="card-tag">Open Science</span>
+              <button class="card-tag" type="button">PyTorch</button>
+              <button class="card-tag" type="button">Notebooks</button>
+              <button class="card-tag" type="button">Open Science</button>
             </div>
           </article>
         </div>
