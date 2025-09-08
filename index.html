@@ -238,26 +238,24 @@
 
 
 .skill-icons i,
-.skill-icons .skill-icons .skill-icon {
-  /* reset any previous box/ backdrop styles */
-  background: none;
-  border-radius: 0;
-  box-shadow: none;
-  backdrop-filter: none;
-
-  /* spacing & sizing */
-  display: inline-block;
+.skill-icons .skill-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;                /* adjust overall size */
+  height: 2rem;
   margin-right: 0.75rem;
   font-size: 2rem;
-  width: 2rem;
-  height: 2rem;
+  color: #fff;
 
-  /* glow around the icon vector */
-  /* for font-based icons */
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+  /* frosted glass background */
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 70%;
 
-  /* for SVG <img> icons */
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+  /* blur whatever’s behind this circle */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 
@@ -461,6 +459,7 @@
   </div>
 </body>
 </html>
+
 
 
 
