@@ -1,143 +1,188 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aref Mahjoubfar — Physician · AI Researcher</title>
+align-items:center;
 
-  <!-- Roboto -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
-
-  <meta name="description" content="Aref Mahjoubfar — medical doctor and AI researcher. Medical AI, computer vision, LLMs, uncertainty quantification.">
-
-  <style>
-    :root{
-      --accent: #1cb495;
-      --muted: rgba(255,255,255,0.80);
-      --chip-bg: rgba(255,255,255,0.03);
-      --chip-border: rgba(255,255,255,0.04);
-      --glass-bg: rgba(6,8,10,0.72); /* stronger fallback so content is visible */
-      --glass-border: rgba(255,255,255,0.08);
-      --hover-ease: cubic-bezier(.2,.9,.2,1);
+      transition: transform 200ms var(--hover-ease), box-shadow 200ms var(--hover-ease), background-color 200ms var(--hover-ease), border-color 200ms var(--hover-ease);
+      will-change: transform, box-shadow;
     }
-
-    /* Basic reset */
-    *{box-sizing:border-box}
-    html,body{height:100%; margin:0; font-family:"Roboto",sans-serif; -webkit-font-smoothing:antialiased}
-    a{color:inherit; text-decoration:none}
-    img{max-width:100%;display:block}
-
-    /* Page baseline */
-    body{
-      color:#fff;
-      background-color:#0b0b0b; /* fallback if no bg image */
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      display:block;
-    }
-
-    /* Animated background element with fallback gradient (if image missing you'll still see pattern) */
-    .bg-anim {
-      position:fixed;
-      inset:0;
-      z-index:0;
-      background:
-        linear-gradient(180deg, rgba(10,12,14,0.22), rgba(8,10,12,0.28)),
-        url('/assets/background/bg.jpg') center/cover no-repeat;
-      transform-origin:center center;
-      will-change: transform, opacity;
-      animation: bgZoom 40s ease-in-out infinite;
-      opacity:1;
-    }
-
-    /* If the image doesn't exist, JS will add .no-bg to <html> and this rule uses a nicer fallback */
-    html.no-bg .bg-anim {
-      background: radial-gradient(ellipse at center, #2b2b2b 0%, #151515 60%);
-      filter: contrast(0.95) brightness(0.95);
-    }
-
-    /* Slightly less-opaque overlay so glass content shows reliably */
-    .bg-overlay {
-      position:fixed;
-      inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.55) 100%);
-      pointer-events:none;
-      z-index:1;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .bg-anim { animation: none; transform: scale(1); }
-    }
-
-    @keyframes bgZoom {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(0.96); }
-      100% { transform: scale(1); }
-    }
-
-    /* Glass central panel (more opaque so it shows even on dark background) */
-    .glass-wrap {
-      position:relative;
-      z-index:2;
-      max-width:980px;
-      margin:48px auto 80px;
-      border-radius:16px;
-      padding:1.25rem;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.6);
-      backdrop-filter: blur(10px) saturate(120%);
-      -webkit-backdrop-filter: blur(10px) saturate(120%);
-      overflow: visible;
-    }
-
-    @supports not ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
-      .glass-wrap { background: rgba(10,12,14,0.86); }
-    }
-
-    /* internal layout */
-    .site { width:100%; margin:0 auto; padding:0.75rem 1rem; display:flex; flex-direction:column; gap:1.25rem; }
-
-    /* Header */
-    header.site-header{ display:flex; justify-content:space-between; align-items:center; gap:1rem; }
-    header .brand { font-weight:700; color:rgba(255,255,255,0.95); font-size:1.02rem; }
-    header .sub { color: rgba(255,255,255,0.66); font-size:0.95rem; }
-
-    /* Hero / About */
-    .hero { margin-top:6px; padding:0.35rem 0 0.6rem 0; display:flex; flex-direction:column; align-items:center; text-align:center; gap:0.8rem; }
-    .hero h1 { font-size:2rem; margin:0; font-weight:700; color:#fff; }
-    .hero .slogan { font-weight:700; color:rgba(255,255,255,0.95); }
-    .hero .lead { color: var(--muted); max-width:880px; font-size:0.98rem; line-height:1.55; }
-
-    /* chips */
-    .keywords{display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;margin-top:0.5rem;}
-    .chip{
-      background: rgba(255,255,255,0.02);
-      border:1px solid rgba(255,255,255,0.04);
-      color:#fff;
-      padding:0.38rem 0.65rem;
-      border-radius:999px;
-      font-weight:700;
-      font-size:0.88rem;
-      transition: transform 180ms var(--hover-ease), box-shadow 180ms var(--hover-ease), background-color 180ms var(--hover-ease), border-color 180ms var(--hover-ease);
-    }
-    .chip:hover, .chip:focus-visible {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 10px 24px rgba(28,180,149,0.08);
+    .contact a.cta:hover,
+    .contact a.cta:focus-visible {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(28,180,149,0.10);
       border-color: rgba(28,180,149,0.18);
-      background: linear-gradient(180deg, rgba(28,180,149,0.03), rgba(255,255,255,0.01));
-      outline:none;
+      background: linear-gradient(180deg, rgba(28,180,149,0.04), rgba(255,255,255,0.01));
+      outline: none;
     }
 
-    /* Projects grid */
-    .projects { margin-top:0.5rem; display:grid; grid-template-columns: repeat(3, 1fr); gap:1rem; }
+    /* keyboard-visible focus */
+    .chip:focus-visible,
+    .card-tag:focus-visible,
+    .contact a.cta:focus-visible,
+    .card:focus-within {
+      box-shadow: 0 10px 28px rgba(28,180,149,0.10);
+      outline-offset: 2px;
+    }
 
-    .card { background: rgba(255,255,255,0.018); border: 1px solid rgba(255,255,255,0.03); padding:1rem; border-radius:12px; display:flex; flex-direction:column; gap:0.75rem; transition: transform 200ms var(--hover-ease), box-shadow 200ms ease, border-color 200ms ease; min-height:150px; }
-    .card:hover{ transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.55); border-color: rgba(28,180,149,0.16); background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.006)); }
+    footer.footer { margin-top:1rem; color: rgba(255,255,255,0.52); font-size:0.95rem; text-align:center; padding:0.8rem 0 1.2rem; }
 
-    .card-top { display:flex; align-items:center; gap:0.8rem; }
-    .icon-wrap{ width:52px; height:52px; border-radius:10px; background: rgba(255,255,255,0.03); display:flex; align-items:center; justify-content:center; font-size:1.25rem; color:var(--accent); flex-shrink:0; }
-    .card-title{ font-weight:7
+    /* Responsiveness */
+    @media (max-width:1000px){
+      .projects { grid-template-columns: repeat(2, 1fr); }
+      .hero h1 { font-size:1.9rem; }
+      .glass-wrap { max-width:920px; }
+    }
+    @media (max-width:680px){
+      .glass-wrap {
+        margin:20px 14px;
+        border-radius:14px;
+        padding:0.9rem;
+      }
+      .site { padding:0.5rem 0.2rem; }
+      .projects { grid-template-columns: 1fr; }
+      .hero { margin-top:0.6rem; padding:0.4rem 0 }
+      .hero h1 { font-size:1.45rem; }
+      .card { min-height: auto; }
+    }
+
+    /* small accessibility focus */
+    .card:focus-within { outline:3px solid rgba(28,180,149,0.12); }
+  </style>
+</head>
+<body>
+  <div class="bg-overlay" aria-hidden="true"></div>
+
+  <!-- Glass central card -->
+  <div class="glass-wrap" role="region" aria-label="Main content">
+    <main class="site" role="main">
+      <!-- small top header -->
+      <header class="site-header" aria-label="Site header">
+        <div class="brand">Aref Mahjoubfar</div>
+        <div class="sub">Physician · AI Researcher · Medical AI</div>
+      </header>
+
+      <!-- HERO / ABOUT -->
+      <section class="hero" aria-labelledby="about-heading">
+        <h1 id="about-heading">Hi, I'm Aref Mahjoubfar 👋</h1>
+        <div class="slogan">Medical doctor passionate about Artificial Intelligence, Medical AI Applications 🏥, and automation 🤖</div>
+
+        <p class="lead">
+          I'm a medical doctor with a strong passion for research in Artificial Intelligence, Medical AI Applications, and automation.
+        </p>
+
+        <!-- Full bio content provided -->
+        <div style="max-width:900px; color:var(--muted); text-align:left; font-size:0.98rem; line-height:1.6;">
+          <strong>My Journey</strong>
+          <p style="margin-top:0.6rem;">
+            My fascination with technology began in childhood, when I started designing websites using CMSs, as well as building custom websites from scratch. As I grew older, I explored application development with C#, further deepening my interest in software and automation.
+          </p>
+          <p>
+            During my medical education, I teamed up with a group of friends (EN.SAF 😘 — Fairness in Persian) to explore machine learning with a focus on computer vision in medical practice. This led to a thesis project that involved diagnosing Acute Lymphoblastic Leukemia (ALL) and Acute Myeloblastic Leukemia (AML) through the analysis of blood and bone marrow slide images, with a dataset we collected over the span of one year. Over time, I honed my skills in Python 🐍 and worked extensively with machine learning libraries like PyTorch and TensorFlow. More recently, I've expanded into Natural Language Processing and working with Large Language Models, actively designing models to push the boundaries of Medical AI.
+          </p>
+
+          <strong style="display:block; margin-top:0.75rem;">My Vision</strong>
+          <p style="margin-top:0.6rem;">
+            Life moves on, and I'm genuinely excited about the future and the next wave of technological innovations (my ultimate goal of immortality! 😉). I firmly believe in open science and the importance of combining our efforts step by step to lay down the foundations for tomorrow's breakthroughs. Let's keep learning, innovating, and making strides towards a better future together!
+          </p>
+
+          <strong style="display:block; margin-top:0.75rem;">Experiences</strong>
+          <p style="margin-top:0.5rem; font-weight:700; color:#fff;">
+            Python · TensorFlow · PyTorch · LangChain · HTML · CSS · Joomla · WordPress · Adobe Illustrator · Adobe Photoshop
+          </p>
+        </div>
+
+        <!-- top-level keywords -->
+        <div class="keywords" aria-hidden="false" style="margin-top:0.8rem;">
+          <span class="chip">Medical AI</span>
+          <span class="chip">Computer Vision</span>
+          <span class="chip">LLMs</span>
+          <span class="chip">Uncertainty</span>
+          <span class="chip">PyTorch</span>
+        </div>
+      </section>
+
+      <!-- Featured Projects -->
+      <section aria-labelledby="projects-heading">
+        <h2 id="projects-heading" style="margin:0 0 0.9rem 0; font-size:1.15rem; color: #fff;">Featured projects</h2>
+
+        <div class="projects" role="list">
+          <!-- Card 1 -->
+          <article class="card" role="listitem" tabindex="0" aria-labelledby="p1-title">
+            <div class="card-top">
+              <div class="icon-wrap" aria-hidden="true"><i class="fa-solid fa-microscope"></i></div>
+              <div>
+                <div id="p1-title" class="card-title">Leukemia Slide Classifier</div>
+                <div style="font-size:0.88rem; color:var(--muted)">ResNet-18 based classification of ALL, AML and benign on BMA & PBS images.</div>
+              </div>
+            </div>
+
+            <div class="card-desc">
+              Trained and evaluated lightweight CNNs (ResNet-18) on a year-collected dataset of bone marrow aspiration and peripheral blood smear images. Emphasis on reproducible pipelines and clinically relevant evaluation metrics.
+            </div>
+
+            <div class="card-tags" aria-hidden="false">
+              <span class="card-tag">ResNet-18</span>
+              <span class="card-tag">Segmentation</span>
+              <span class="card-tag">DeepLab v3</span>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card" role="listitem" tabindex="0" aria-labelledby="p2-title">
+            <div class="card-top">
+              <div class="icon-wrap" aria-hidden="true"><i class="fa-solid fa-brain"></i></div>
+              <div>
+                <div id="p2-title" class="card-title">Uncertainty in LLMs (Narrative)</div>
+                <div style="font-size:0.88rem; color:var(--muted)">Narrative review & experiments on uncertainty quantification for clinical LLM tasks.</div>
+              </div>
+            </div>
+
+            <div class="card-desc">
+              Research on calibrating and quantifying uncertainty in large language models used for clinical extraction and decision support — combining log-prob analyses, SHAP explainers, and calibration metrics.
+            </div>
+
+            <div class="card-tags" aria-hidden="false">
+              <span class="card-tag">LLMs</span>
+              <span class="card-tag">SHAP</span>
+              <span class="card-tag">Calibration</span>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card" role="listitem" tabindex="0" aria-labelledby="p3-title">
+            <div class="card-top">
+              <div class="icon-wrap" aria-hidden="true"><i class="fa-solid fa-code"></i></div>
+              <div>
+                <div id="p3-title" class="card-title">Tooling & Reproducibility</div>
+                <div style="font-size:0.88rem; color:var(--muted)">Scripts & notebooks to standardize dataset pre-processing, model finetuning (PyTorch), and evaluation — aimed to make research reproducible and shareable.</div>
+              </div>
+            </div>
+
+            <div class="card-desc">
+              Standardized preprocessing, finetuning pipelines, and evaluation scripts aimed to make experiments repeatable and shareable. Focus on clear notebooks and open-science-friendly licenses.
+            </div>
+
+            <div class="card-tags" aria-hidden="false">
+              <span class="card-tag">PyTorch</span>
+              <span class="card-tag">Notebooks</span>
+              <span class="card-tag">Open Science</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading" style="margin:0; font-size:1.15rem;">Contact</h2>
+        <p style="color:var(--muted); margin-bottom:0.6rem;">ORCID · Google Scholar · LinkedIn · Website</p>
+
+        <div class="links" role="list">
+          <a class="cta" role="listitem" href="#" aria-label="ORCID"><i class="fa-brands fa-orcid"></i> ORCID</a>
+          <a class="cta" role="listitem" href="#" aria-label="Google Scholar"><i class="fa-solid fa-graduation-cap"></i> Google Scholar</a>
+          <a class="cta" role="listitem" href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a class="cta" role="listitem" href="#" aria-label="Website"><i class="fa-solid fa-globe"></i> Website</a>
+        </div>
+      </section>
+
+      <footer class="footer" aria-hidden="false">© Aref Mahjoubfar — Medical AI · Built with open science in mind.</footer>
+    </main>
+  </div>
+</body>
+</html>
