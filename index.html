@@ -20,6 +20,8 @@
       --card-bg: rgba(255,255,255,0.03);
       --card-border: rgba(255,255,255,0.06);
       --muted: rgba(255,255,255,0.68);
+      --glass-bg: rgba(10,12,14,0.46); /* dark glass tint */
+      --glass-border: rgba(255,255,255,0.06);
     }
 
     /* Reset-ish (kept minimal) */
@@ -37,29 +39,50 @@
       min-height:100vh;
       display:flex;
       flex-direction:column;
-      align-items:stretch;
+      align-items:center;
+      justify-content:flex-start;
     }
 
     /* dark overlay for readability */
     .bg-overlay {
       position:fixed;
       inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.65) 100%);
+      background: linear-gradient(180deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.64) 100%);
       pointer-events:none;
       z-index:0;
     }
 
-    /* main container */
-    .site {
+    /* main wrapper (glass card) */
+    .glass-wrap {
       position:relative;
-      z-index:1;
+      z-index:2;
       width:100%;
-      max-width:1200px;
+      max-width:1050px;
+      margin:3.25rem 1rem;
+      border-radius:18px;
+      padding:1.25rem;
+      /* dark glass effect */
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 10px 30px rgba(2,6,10,0.55);
+      backdrop-filter: blur(8px) saturate(120%);
+      -webkit-backdrop-filter: blur(8px) saturate(120%);
+      overflow:hidden;
+    }
+
+    /* If browser doesn't support backdrop-filter, slightly stronger fallback color */
+    @supports not ((-webkit-backdrop-filter: blur(8px)) or (backdrop-filter: blur(8px))) {
+      .glass-wrap { background: rgba(8,10,12,0.74); }
+    }
+
+    /* content inside glass */
+    .site {
+      width:100%;
       margin:0 auto;
-      padding:2.25rem;
+      padding:1.25rem 1.15rem;
       display:flex;
       flex-direction:column;
-      gap:2.25rem;
+      gap:1.75rem;
     }
 
     /* Header small */
@@ -72,7 +95,8 @@
     header .brand {
       font-weight:700;
       letter-spacing:0.01em;
-      color:rgba(255,255,255,0.9);
+      color:rgba(255,255,255,0.95);
+      font-size:1.05rem;
     }
     header .sub {
       color: rgba(255,255,255,0.6);
@@ -81,19 +105,20 @@
 
     /* HERO / About */
     .hero {
-      margin-top:3.5rem; /* keep title lower */
-      padding:2.25rem;
+      margin-top:0.75rem; /* within glass; overall positioning handled by glass-wrap margin */
+      padding:1rem 0;
       display:flex;
       flex-direction:column;
       align-items:center;
       text-align:center;
-      gap:1rem;
+      gap:0.9rem;
     }
     .hero h1 {
-      font-size:2.75rem;
+      font-size:2rem;
       margin:0;
       line-height:1;
       font-weight:700;
+      color: #ffffff;
     }
     .hero .slogan {
       font-weight:700;
@@ -102,7 +127,7 @@
     .hero .lead {
       color: var(--muted);
       max-width:840px;
-      font-size:1.02rem;
+      font-size:1rem;
       line-height:1.6;
     }
 
@@ -118,7 +143,7 @@
       margin-top:0.5rem;
     }
     .chip {
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.04);
       color: #fff;
       padding:0.45rem 0.7rem;
@@ -136,8 +161,8 @@
     }
 
     .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.03);
       padding:1.15rem;
       border-radius:12px;
       display:flex;
@@ -151,7 +176,7 @@
       transform: translateY(-8px);
       box-shadow: 0 18px 40px rgba(0,0,0,0.6);
       border-color: rgba(28,180,149,0.18);
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.006));
     }
 
     .card-top {
@@ -164,7 +189,7 @@
       width:56px;
       height:56px;
       border-radius:10px;
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.03);
       display:flex;
       align-items:center;
       justify-content:center;
@@ -237,19 +262,25 @@
       color: rgba(255,255,255,0.5);
       font-size:0.95rem;
       text-align:center;
-      padding:1.25rem 0 3rem 0;
+      padding:1.25rem 0 1.25rem 0;
     }
 
     /* Responsive */
     @media (max-width:1000px){
       .projects { grid-template-columns: repeat(2, 1fr); }
-      .hero h1 { font-size:2.35rem; }
+      .hero h1 { font-size:1.9rem; }
+      .glass-wrap { max-width:920px; }
     }
     @media (max-width:680px){
-      .site { padding:1rem; }
+      .glass-wrap {
+        margin:1.25rem;
+        border-radius:14px;
+        padding:0.9rem;
+      }
+      .site { padding:0.5rem 0.2rem; }
       .projects { grid-template-columns: 1fr; }
-      .hero { margin-top:2.5rem; padding:1.2rem 0 }
-      .hero h1 { font-size:1.75rem; }
+      .hero { margin-top:0.6rem; padding:0.4rem 0 }
+      .hero h1 { font-size:1.45rem; }
       .card { min-height: auto; }
     }
 
@@ -260,139 +291,142 @@
 <body>
   <div class="bg-overlay" aria-hidden="true"></div>
 
-  <main class="site" role="main">
-    <!-- small top header -->
-    <header class="site-header" aria-label="Site header">
-      <div class="brand">Aref Mahjoubfar</div>
-      <div class="sub">Physician · AI Researcher · Medical AI</div>
-    </header>
+  <!-- Glass central card -->
+  <div class="glass-wrap" role="region" aria-label="Main content">
+    <main class="site" role="main">
+      <!-- small top header -->
+      <header class="site-header" aria-label="Site header">
+        <div class="brand">Aref Mahjoubfar</div>
+        <div class="sub">Physician · AI Researcher · Medical AI</div>
+      </header>
 
-    <!-- HERO / ABOUT -->
-    <section class="hero" aria-labelledby="about-heading">
-      <h1 id="about-heading">Hi, I'm Aref Mahjoubfar 👋</h1>
-      <div class="slogan">Medical doctor passionate about Artificial Intelligence, Medical AI Applications 🏥, and automation 🤖</div>
+      <!-- HERO / ABOUT -->
+      <section class="hero" aria-labelledby="about-heading">
+        <h1 id="about-heading">Hi, I'm Aref Mahjoubfar 👋</h1>
+        <div class="slogan">Medical doctor passionate about Artificial Intelligence, Medical AI Applications 🏥, and automation 🤖</div>
 
-      <p class="lead">
-        I'm a medical doctor with a strong passion for research in Artificial Intelligence, Medical AI Applications, and automation.
-      </p>
-
-      <!-- Full bio content provided -->
-      <div style="max-width:900px; color:var(--muted); text-align:left; font-size:0.98rem; line-height:1.6;">
-        <strong>My Journey</strong>
-        <p style="margin-top:0.6rem;">
-          My fascination with technology began in childhood, when I started designing websites using CMSs, as well as building custom websites from scratch. As I grew older, I explored application development with C#, further deepening my interest in software and automation.
-        </p>
-        <p>
-          During my medical education, I teamed up with a group of friends (EN.SAF 😘 — Fairness in Persian) to explore machine learning with a focus on computer vision in medical practice. This led to a thesis project that involved diagnosing Acute Lymphoblastic Leukemia (ALL) and Acute Myeloblastic Leukemia (AML) through the analysis of blood and bone marrow slide images, with a dataset we collected over the span of one year. Over time, I honed my skills in Python 🐍 and worked extensively with machine learning libraries like PyTorch and TensorFlow. More recently, I've expanded into Natural Language Processing and working with Large Language Models, actively designing models to push the boundaries of Medical AI.
+        <p class="lead">
+          I'm a medical doctor with a strong passion for research in Artificial Intelligence, Medical AI Applications, and automation.
         </p>
 
-        <strong style="display:block; margin-top:0.75rem;">My Vision</strong>
-        <p style="margin-top:0.6rem;">
-          Life moves on, and I'm genuinely excited about the future and the next wave of technological innovations (my ultimate goal of immortality! 😉). I firmly believe in open science and the importance of combining our efforts step by step to lay down the foundations for tomorrow's breakthroughs. Let's keep learning, innovating, and making strides towards a better future together!
-        </p>
+        <!-- Full bio content provided -->
+        <div style="max-width:900px; color:var(--muted); text-align:left; font-size:0.98rem; line-height:1.6;">
+          <strong>My Journey</strong>
+          <p style="margin-top:0.6rem;">
+            My fascination with technology began in childhood, when I started designing websites using CMSs, as well as building custom websites from scratch. As I grew older, I explored application development with C#, further deepening my interest in software and automation.
+          </p>
+          <p>
+            During my medical education, I teamed up with a group of friends (EN.SAF 😘 — Fairness in Persian) to explore machine learning with a focus on computer vision in medical practice. This led to a thesis project that involved diagnosing Acute Lymphoblastic Leukemia (ALL) and Acute Myeloblastic Leukemia (AML) through the analysis of blood and bone marrow slide images, with a dataset we collected over the span of one year. Over time, I honed my skills in Python 🐍 and worked extensively with machine learning libraries like PyTorch and TensorFlow. More recently, I've expanded into Natural Language Processing and working with Large Language Models, actively designing models to push the boundaries of Medical AI.
+          </p>
 
-        <strong style="display:block; margin-top:0.75rem;">Experiences</strong>
-        <p style="margin-top:0.5rem; font-weight:700; color:#fff;">
-          Python · TensorFlow · PyTorch · LangChain · HTML · CSS · Joomla · WordPress · Adobe Illustrator · Adobe Photoshop
-        </p>
-      </div>
+          <strong style="display:block; margin-top:0.75rem;">My Vision</strong>
+          <p style="margin-top:0.6rem;">
+            Life moves on, and I'm genuinely excited about the future and the next wave of technological innovations (my ultimate goal of immortality! 😉). I firmly believe in open science and the importance of combining our efforts step by step to lay down the foundations for tomorrow's breakthroughs. Let's keep learning, innovating, and making strides towards a better future together!
+          </p>
 
-      <!-- top-level keywords -->
-      <div class="keywords" aria-hidden="false" style="margin-top:0.8rem;">
-        <span class="chip">Medical AI</span>
-        <span class="chip">Computer Vision</span>
-        <span class="chip">LLMs</span>
-        <span class="chip">Uncertainty</span>
-        <span class="chip">PyTorch</span>
-      </div>
-    </section>
+          <strong style="display:block; margin-top:0.75rem;">Experiences</strong>
+          <p style="margin-top:0.5rem; font-weight:700; color:#fff;">
+            Python · TensorFlow · PyTorch · LangChain · HTML · CSS · Joomla · WordPress · Adobe Illustrator · Adobe Photoshop
+          </p>
+        </div>
 
-    <!-- Featured Projects -->
-    <section aria-labelledby="projects-heading">
-      <h2 id="projects-heading" style="margin:0 0 0.9rem 0; font-size:1.25rem; color: #fff;">Featured projects</h2>
+        <!-- top-level keywords -->
+        <div class="keywords" aria-hidden="false" style="margin-top:0.8rem;">
+          <span class="chip">Medical AI</span>
+          <span class="chip">Computer Vision</span>
+          <span class="chip">LLMs</span>
+          <span class="chip">Uncertainty</span>
+          <span class="chip">PyTorch</span>
+        </div>
+      </section>
 
-      <div class="projects" role="list">
-        <!-- Card 1 -->
-        <article class="card" role="listitem" tabindex="0" aria-labelledby="p1-title">
-          <div class="card-top">
-            <div class="icon-wrap" aria-hidden="true"><i class="fa-solid fa-microscope"></i></div>
-            <div>
-              <div id="p1-title" class="card-title">Leukemia Slide Classifier</div>
-              <div style="font-size:0.88rem; color:var(--muted)">ResNet-18 based classification of ALL, AML and benign on BMA & PBS images.</div>
+      <!-- Featured Projects -->
+      <section aria-labelledby="projects-heading">
+        <h2 id="projects-heading" style="margin:0 0 0.9rem 0; font-size:1.15rem; color: #fff;">Featured projects</h2>
+
+        <div class="projects" role="list">
+          <!-- Card 1 -->
+          <article class="card" role="listitem" tabindex="0" aria-labelledby="p1-title">
+            <div class="card-top">
+              <div class="icon-wrap" aria-hidden="true"><i class="fa-solid fa-microscope"></i></div>
+              <div>
+                <div id="p1-title" class="card-title">Leukemia Slide Classifier</div>
+                <div style="font-size:0.86rem; color:var(--muted)">ResNet-18 classification for ALL, AML and benign on BMA & PBS images.</div>
+              </div>
             </div>
-          </div>
 
-          <div class="card-desc">
-            Trained and evaluated lightweight CNNs (ResNet-18) on a year-collected dataset of bone marrow aspiration and peripheral blood smear images. Emphasis on reproducible pipelines and clinically relevant evaluation metrics.
-          </div>
-
-          <div class="card-tags" aria-hidden="false">
-            <span class="card-tag">ResNet-18</span>
-            <span class="card-tag">Segmentation</span>
-            <span class="card-tag">DeepLab v3</span>
-          </div>
-        </article>
-
-        <!-- Card 2 -->
-        <article class="card" role="listitem" tabindex="0" aria-labelledby="p2-title">
-          <div class="card-top">
-            <div class="icon-wrap" aria-hidden="true"><i class="fa-solid fa-brain"></i></div>
-            <div>
-              <div id="p2-title" class="card-title">Uncertainty in LLMs (Narrative)</div>
-              <div style="font-size:0.88rem; color:var(--muted)">Narrative review + experiments on uncertainty quantification for clinical LLM tasks.</div>
+            <div class="card-desc">
+              Trained and evaluated lightweight CNNs (ResNet-18) on a year-collected dataset of bone marrow aspiration and peripheral blood smear images. Emphasis on reproducible pipelines and clinically relevant evaluation metrics.
             </div>
-          </div>
 
-          <div class="card-desc">
-            Research on calibrating and quantifying uncertainty in large language models used for clinical extraction and decision support — combining log-prob analyses, SHAP explainers, and calibration metrics.
-          </div>
-
-          <div class="card-tags" aria-hidden="false">
-            <span class="card-tag">LLMs</span>
-            <span class="card-tag">SHAP</span>
-            <span class="card-tag">Calibration</span>
-          </div>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="card" role="listitem" tabindex="0" aria-labelledby="p3-title">
-          <div class="card-top">
-            <div class="icon-wrap" aria-hidden="true"><i class="fa-solid fa-code"></i></div>
-            <div>
-              <div id="p3-title" class="card-title">Tooling & Reproducibility</div>
-              <div style="font-size:0.88rem; color:var(--muted)">Scripts & notebooks for reproducible ML research (PyTorch/TensorFlow).</div>
+            <div class="card-tags" aria-hidden="false">
+              <span class="card-tag">ResNet-18</span>
+              <span class="card-tag">Segmentation</span>
+              <span class="card-tag">DeepLab v3</span>
             </div>
-          </div>
+          </article>
 
-          <div class="card-desc">
-            Standardized preprocessing, finetuning pipelines, and evaluation scripts aimed to make experiments repeatable and shareable. Focus on clear notebooks and open-science-friendly licenses.
-          </div>
+          <!-- Card 2 -->
+          <article class="card" role="listitem" tabindex="0" aria-labelledby="p2-title">
+            <div class="card-top">
+              <div class="icon-wrap" aria-hidden="true"><i class="fa-solid fa-brain"></i></div>
+              <div>
+                <div id="p2-title" class="card-title">Uncertainty in LLMs (Narrative)</div>
+                <div style="font-size:0.86rem; color:var(--muted)">Narrative review + experiments on uncertainty quantification for clinical LLM tasks.</div>
+              </div>
+            </div>
 
-          <div class="card-tags" aria-hidden="false">
-            <span class="card-tag">PyTorch</span>
-            <span class="card-tag">Notebooks</span>
-            <span class="card-tag">Open Science</span>
-          </div>
-        </article>
-      </div>
-    </section>
+            <div class="card-desc">
+              Research on calibrating and quantifying uncertainty in large language models used for clinical extraction and decision support — combining log-prob analyses, SHAP explainers, and calibration metrics.
+            </div>
 
-    <!-- Contact -->
-    <section class="contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading" style="margin:0; font-size:1.15rem;">Contact</h2>
-      <p>ORCID · Google Scholar · LinkedIn · Website</p>
+            <div class="card-tags" aria-hidden="false">
+              <span class="card-tag">LLMs</span>
+              <span class="card-tag">SHAP</span>
+              <span class="card-tag">Calibration</span>
+            </div>
+          </article>
 
-      <div class="links" role="list">
-        <a class="cta" role="listitem" href="#" aria-label="ORCID"><i class="fa-brands fa-orcid"></i> ORCID</a>
-        <a class="cta" role="listitem" href="#" aria-label="Google Scholar"><i class="fa-solid fa-graduation-cap"></i> Google Scholar</a>
-        <a class="cta" role="listitem" href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-        <a class="cta" role="listitem" href="#" aria-label="Website"><i class="fa-solid fa-globe"></i> Website</a>
-      </div>
-    </section>
+          <!-- Card 3 -->
+          <article class="card" role="listitem" tabindex="0" aria-labelledby="p3-title">
+            <div class="card-top">
+              <div class="icon-wrap" aria-hidden="true"><i class="fa-solid fa-code"></i></div>
+              <div>
+                <div id="p3-title" class="card-title">Tooling & Reproducibility</div>
+                <div style="font-size:0.86rem; color:var(--muted)">Scripts & notebooks for reproducible ML research (PyTorch/TensorFlow).</div>
+              </div>
+            </div>
 
-    <footer class="footer" aria-hidden="false">
-      © Aref Mahjoubfar — Medical AI · Built with open science in mind.
-    </footer>
-  </main>
+            <div class="card-desc">
+              Standardized preprocessing, finetuning pipelines, and evaluation scripts aimed to make experiments repeatable and shareable. Focus on clear notebooks and open-science-friendly licenses.
+            </div>
+
+            <div class="card-tags" aria-hidden="false">
+              <span class="card-tag">PyTorch</span>
+              <span class="card-tag">Notebooks</span>
+              <span class="card-tag">Open Science</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading" style="margin:0; font-size:1.05rem;">Contact</h2>
+        <p>ORCID · Google Scholar · LinkedIn · Website</p>
+
+        <div class="links" role="list">
+          <a class="cta" role="listitem" href="#" aria-label="ORCID"><i class="fa-brands fa-orcid"></i> ORCID</a>
+          <a class="cta" role="listitem" href="#" aria-label="Google Scholar"><i class="fa-solid fa-graduation-cap"></i> Google Scholar</a>
+          <a class="cta" role="listitem" href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a class="cta" role="listitem" href="#" aria-label="Website"><i class="fa-solid fa-globe"></i> Website</a>
+        </div>
+      </section>
+
+      <footer class="footer" aria-hidden="false">
+        © Aref Mahjoubfar — Medical AI · Built with open science in mind.
+      </footer>
+    </main>
+  </div>
 </body>
 </html>
