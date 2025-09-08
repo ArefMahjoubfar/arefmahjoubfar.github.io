@@ -16,59 +16,128 @@
   <style>
     :root{
       --accent: #1cb495;
-      --muted: rgba(255,255,255,0.72);
+      --muted: rgba(255,255,255,0.80);
       --chip-bg: rgba(255,255,255,0.03);
       --chip-border: rgba(255,255,255,0.04);
-      --glass-bg: rgba(10,12,14,0.46);
-      --glass-border: rgba(255,255,255,0.06);
+      --glass-bg: rgba(6,8,10,0.72); /* stronger fallback so content is visible */
+      --glass-border: rgba(255,255,255,0.08);
       --hover-ease: cubic-bezier(.2,.9,.2,1);
     }
 
     /* Basic reset */
     *{box-sizing:border-box}
-    html,body{height:auto; margin:0; font-family:"Roboto",sans-serif; -webkit-font-smoothing:antialiased}
+    html,body{height:100%; margin:0; font-family:"Roboto",sans-serif; -webkit-font-smoothing:antialiased}
     a{color:inherit; text-decoration:none}
     img{max-width:100%;display:block}
 
-    /* Remove body background-image — we animate a dedicated element instead */
+    /* Page baseline */
     body{
       color:#fff;
+      background-color:#0b0b0b; /* fallback if no bg image */
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       display:block;
-      background-color:#000; /* fallback color */
     }
 
-    /* Animated background element (behind overlay and glass) */
+    /* Animated background element with fallback gradient (if image missing you'll still see pattern) */
     .bg-anim {
       position:fixed;
       inset:0;
-      z-index:0; /* behind overlay (z-index:1) and content (z-index:2) */
-      background-image: url('/assets/background/bg.jpg');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      transform-origin: center center;
-      will-change: transform;
-      /* Slow zoom out -> zoom in loop */
+      z-index:0;
+      background:
+        linear-gradient(180deg, rgba(10,12,14,0.22), rgba(8,10,12,0.28)),
+        url('/assets/background/bg.jpg') center/cover no-repeat;
+      transform-origin:center center;
+      will-change: transform, opacity;
       animation: bgZoom 40s ease-in-out infinite;
+      opacity:1;
     }
 
-    /* Provide an overlay for legibility above the background */
+    /* If the image doesn't exist, JS will add .no-bg to <html> and this rule uses a nicer fallback */
+    html.no-bg .bg-anim {
+      background: radial-gradient(ellipse at center, #2b2b2b 0%, #151515 60%);
+      filter: contrast(0.95) brightness(0.95);
+    }
+
+    /* Slightly less-opaque overlay so glass content shows reliably */
     .bg-overlay {
       position:fixed;
       inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.62) 100%);
+      background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.55) 100%);
       pointer-events:none;
       z-index:1;
     }
 
-    /* Respect users who prefer reduced motion */
     @media (prefers-reduced-motion: reduce) {
       .bg-anim { animation: none; transform: scale(1); }
     }
 
-    /* Animation: start at 1 -> slow zoom out to 0.96 -> return to 1 */
     @keyframes bgZoom {
       0%   { transform: scale(1); }
-      50%  { tra
+      50%  { transform: scale(0.96); }
+      100% { transform: scale(1); }
+    }
+
+    /* Glass central panel (more opaque so it shows even on dark background) */
+    .glass-wrap {
+      position:relative;
+      z-index:2;
+      max-width:980px;
+      margin:48px auto 80px;
+      border-radius:16px;
+      padding:1.25rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px) saturate(120%);
+      -webkit-backdrop-filter: blur(10px) saturate(120%);
+      overflow: visible;
+    }
+
+    @supports not ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+      .glass-wrap { background: rgba(10,12,14,0.86); }
+    }
+
+    /* internal layout */
+    .site { width:100%; margin:0 auto; padding:0.75rem 1rem; display:flex; flex-direction:column; gap:1.25rem; }
+
+    /* Header */
+    header.site-header{ display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+    header .brand { font-weight:700; color:rgba(255,255,255,0.95); font-size:1.02rem; }
+    header .sub { color: rgba(255,255,255,0.66); font-size:0.95rem; }
+
+    /* Hero / About */
+    .hero { margin-top:6px; padding:0.35rem 0 0.6rem 0; display:flex; flex-direction:column; align-items:center; text-align:center; gap:0.8rem; }
+    .hero h1 { font-size:2rem; margin:0; font-weight:700; color:#fff; }
+    .hero .slogan { font-weight:700; color:rgba(255,255,255,0.95); }
+    .hero .lead { color: var(--muted); max-width:880px; font-size:0.98rem; line-height:1.55; }
+
+    /* chips */
+    .keywords{display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;margin-top:0.5rem;}
+    .chip{
+      background: rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.04);
+      color:#fff;
+      padding:0.38rem 0.65rem;
+      border-radius:999px;
+      font-weight:700;
+      font-size:0.88rem;
+      transition: transform 180ms var(--hover-ease), box-shadow 180ms var(--hover-ease), background-color 180ms var(--hover-ease), border-color 180ms var(--hover-ease);
+    }
+    .chip:hover, .chip:focus-visible {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 10px 24px rgba(28,180,149,0.08);
+      border-color: rgba(28,180,149,0.18);
+      background: linear-gradient(180deg, rgba(28,180,149,0.03), rgba(255,255,255,0.01));
+      outline:none;
+    }
+
+    /* Projects grid */
+    .projects { margin-top:0.5rem; display:grid; grid-template-columns: repeat(3, 1fr); gap:1rem; }
+
+    .card { background: rgba(255,255,255,0.018); border: 1px solid rgba(255,255,255,0.03); padding:1rem; border-radius:12px; display:flex; flex-direction:column; gap:0.75rem; transition: transform 200ms var(--hover-ease), box-shadow 200ms ease, border-color 200ms ease; min-height:150px; }
+    .card:hover{ transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.55); border-color: rgba(28,180,149,0.16); background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.006)); }
+
+    .card-top { display:flex; align-items:center; gap:0.8rem; }
+    .icon-wrap{ width:52px; height:52px; border-radius:10px; background: rgba(255,255,255,0.03); display:flex; align-items:center; justify-content:center; font-size:1.25rem; color:var(--accent); flex-shrink:0; }
+    .card-title{ font-weight:7
