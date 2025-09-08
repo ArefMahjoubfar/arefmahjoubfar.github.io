@@ -236,6 +236,23 @@
       .chip, .card-tag, .contact a.cta { transform:none; } /* avoid translation crowding on small screens */
     }
 
+
+  .skill-icons i,
+  .skill-icons .skill-icon {
+  font-size: 2rem;       /* adjust size */
+  width: 2rem;           /* for <img> fallback */
+  height: 2rem;          /* for <img> fallback */
+  margin-right: 0.75rem; /* spacing */
+  vertical-align: middle;
+  color: #fff;           /* icon color (ignored by <img>) */
+}
+
+.skill-icons .skill-icon {
+  object-fit: contain;   /* keeps your SVG scaled */
+  display: inline-block;
+}
+
+
     /* accessibility fallback for keyboard users */
     .chip, .card-tag, .contact a.cta { cursor: pointer; }
   </style>
@@ -434,6 +451,7 @@
   </div>
 </body>
 </html>
+
 
 
 
