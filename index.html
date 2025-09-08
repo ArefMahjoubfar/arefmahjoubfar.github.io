@@ -1,46 +1,227 @@
 <!DOCTYPE HTML>
-<!--
-	Eventually by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
-		<title>Eventually by HTML5 UP</title>
+		<title>Aref Mahjoub — Physician · AI Researcher</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+		<!-- Font Awesome (icons) -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="" crossorigin="anonymous" />
+
+		<!-- Your main stylesheet -->
 		<link rel="stylesheet" href="assets/css/main.css" />
+
+		<!-- Small extra styles for the new layout (keeps original file untouched) -->
+		<style>
+		  /* Container widths */
+		  .container {
+		    max-width: 1200px;
+		    margin: 0 auto;
+		    padding: 0 1.25em;
+		  }
+
+		  /* Centered hero / about */
+		  #about {
+		    text-align: center;
+		    padding: 3.5em 0;
+		  }
+		  #about h1 { font-size: 3.25em; margin-bottom: 0.2em; }
+		  #about p.lead { color: rgba(255,255,255,0.6); margin-bottom: 1em; }
+
+		  /* Keywords / badges */
+		  .keywords { display:inline-flex; flex-wrap:wrap; gap:0.5em; justify-content:center; margin-top:0.75em; }
+		  .keyword {
+		    background: rgba(255,255,255,0.06);
+		    border: 1px solid rgba(255,255,255,0.06);
+		    padding: 0.35em 0.7em;
+		    border-radius: 999px;
+		    font-size: 0.85em;
+		    color: rgba(255,255,255,0.9);
+		    font-weight:600;
+		  }
+
+		  /* Projects grid */
+		  #projects { padding: 2.5em 0; }
+		  .projects-grid {
+		    display: grid;
+		    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		    gap: 1.25em;
+		  }
+		  .project-card {
+		    background: rgba(255,255,255,0.03);
+		    border: 1px solid rgba(255,255,255,0.04);
+		    padding: 1.25em;
+		    border-radius: 12px;
+		    min-height: 160px;
+		    display:flex;
+		    flex-direction:column;
+		    justify-content:space-between;
+		  }
+		  .project-head {
+		    display:flex;
+		    align-items:center;
+		    gap:0.85em;
+		  }
+		  .project-head .icon {
+		    display:inline-flex;
+		    align-items:center;
+		    justify-content:center;
+		    width:44px;
+		    height:44px;
+		    border-radius:10px;
+		    background: rgba(255,255,255,0.04);
+		    font-size:1.1em;
+		  }
+		  .project-title { font-weight:700; font-size:1.05em; }
+		  .project-desc { color: rgba(255,255,255,0.65); margin:0.85em 0; flex:1; }
+		  .project-tags { display:flex; flex-wrap:wrap; gap:0.5em; margin-top:0.5em; }
+
+		  /* Contact */
+		  #contact { padding: 2.5em 0 5em 0; text-align:center; }
+		  #contact .links { display:inline-flex; gap:1.15em; flex-wrap:wrap; justify-content:center; }
+		  #contact a.contact-pill {
+		    background: rgba(255,255,255,0.03);
+		    border:1px solid rgba(255,255,255,0.04);
+		    padding:0.55em 0.9em;
+		    border-radius:8px;
+		    text-decoration:none;
+		    color:inherit;
+		    font-weight:600;
+		  }
+
+		  /* Responsive smaller headings */
+		  @media screen and (max-width:736px) {
+		    #about h1 { font-size:2.2em; }
+		  }
+		</style>
 	</head>
 	<body class="is-preload">
 
-		<!-- Header -->
-			<header id="header">
-				<h1>Eventually</h1>
-				<p>A simple template for telling the world when you'll launch<br />
-				your next big thing. Brought to you by <a href="http://html5up.net">HTML5 UP</a>.</p>
-			</header>
+		<!-- Optional dynamic background element (your CSS references #bg) -->
+		<div id="bg">
+			<div class="visible" style="background-image: url('assets/images/bg-star.jpg');"></div>
+		</div>
 
-		<!-- Signup Form -->
-			<form id="signup-form" method="post" action="#">
-				<input type="email" name="email" id="email" placeholder="Email Address" />
-				<input type="submit" value="Sign Up" />
-			</form>
+		<!-- Header (kept small because About is the main hero) -->
+		<header id="header">
+			<h1 style="font-size:1.25em;">Aref Mahjoub</h1>
+			<p style="color:rgba(255,255,255,0.5);">Physician · Researcher · AI in Medicine</p>
+		</header>
 
-		<!-- Footer -->
-			<footer id="footer">
-				<ul class="icons">
-					<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-					<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
-				</ul>
-				<ul class="copyright">
-					<li>&copy; Untitled.</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
-				</ul>
-			</footer>
+		<!-- ABOUT / HERO -->
+		<section id="about" class="container special">
+		  <h1>Aref Mahjoub</h1>
+		  <p class="lead">Physician & AI researcher — building tools for medical imaging, uncertainty-aware models, and reliable NLP for clinical workflows.</p>
+
+		  <!-- Short slogan -->
+		  <p style="font-weight:700; margin-top:0.35em;">"From slides to decisions — reliable AI for better clinical care."</p>
+
+		  <!-- Research keywords -->
+		  <div class="keywords" aria-hidden="false">
+		    <span class="keyword">Medical AI</span>
+		    <span class="keyword">Computer Vision</span>
+		    <span class="keyword">Uncertainty Quantification</span>
+		    <span class="keyword">LLMs in Medicine</span>
+		    <span class="keyword">Deep Learning (PyTorch)</span>
+		    <span class="keyword">Clinical Research</span>
+		  </div>
+		</section>
+
+		<!-- FEATURED PROJECTS -->
+		<section id="projects" class="container">
+		  <h2 style="margin-bottom:1em;">Featured projects</h2>
+
+		  <div class="projects-grid" role="list">
+		    <!-- Card 1 -->
+		    <article class="project-card" role="listitem">
+		      <div>
+		        <div class="project-head">
+		          <div class="icon"><i class="fas fa-microscope" aria-hidden="true"></i></div>
+		          <div class="project-title">Leukemia Slide Classifier</div>
+		        </div>
+
+		        <p class="project-desc">
+		          Trained ResNet-18 to classify ALL, AML and benign from bone marrow aspiration & peripheral blood smear images. Focus: lightweight models for reproducible research.
+		        </p>
+		      </div>
+
+		      <div class="project-tags">
+		        <span class="keyword">ResNet-18</span>
+		        <span class="keyword">Segmentation</span>
+		        <span class="keyword">DeepLab v3</span>
+		      </div>
+		    </article>
+
+		    <!-- Card 2 -->
+		    <article class="project-card" role="listitem">
+		      <div>
+		        <div class="project-head">
+		          <div class="icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
+		          <div class="project-title">Uncertainty in LLMs (Narrative)</div>
+		        </div>
+
+		        <p class="project-desc">
+		          Narrative review & experiments on quantifying uncertainty and calibration in large language models for clinical extraction tasks — combines log-prob scores & SHAP-based explainers.
+		        </p>
+		      </div>
+
+		      <div class="project-tags">
+		        <span class="keyword">LLMs</span>
+		        <span class="keyword">SHAP</span>
+		        <span class="keyword">Calibration</span>
+		      </div>
+		    </article>
+
+		    <!-- Card 3 -->
+		    <article class="project-card" role="listitem">
+		      <div>
+		        <div class="project-head">
+		          <div class="icon"><i class="fas fa-code" aria-hidden="true"></i></div>
+		          <div class="project-title">Tooling & Reproducibility</div>
+		        </div>
+
+		        <p class="project-desc">
+		          Scripts and notebooks to standardize dataset pre-processing, model finetuning (PyTorch), and evaluation — aimed to make research reproducible and shareable.
+		        </p>
+		      </div>
+
+		      <div class="project-tags">
+		        <span class="keyword">PyTorch</span>
+		        <span class="keyword">Notebooks</span>
+		        <span class="keyword">Open Science</span>
+		      </div>
+		    </article>
+
+		    <!-- Add more cards as needed -->
+		  </div>
+		</section>
+
+		<!-- CONTACT -->
+		<section id="contact" class="container">
+		  <h2>Contact</h2>
+		  <p style="color:rgba(255,255,255,0.65); margin-bottom:1em;">Feel free to reach out — collaboration, questions, or research inquiries.</p>
+
+		  <div class="links">
+		    <a class="contact-pill" href="mailto:your@email.com"><i class="fas fa-envelope" style="margin-right:0.5em;"></i>Email</a>
+		    <a class="contact-pill" href="https://github.com/your-username"><i class="fab fa-github" style="margin-right:0.5em;"></i>GitHub</a>
+		    <a class="contact-pill" href="https://www.linkedin.com/in/yourprofile"><i class="fab fa-linkedin" style="margin-right:0.5em;"></i>LinkedIn</a>
+		  </div>
+		</section>
+
+		<!-- Footer (keeps your original footer look) -->
+		<footer id="footer">
+			<ul class="icons">
+				<li><a href="https://twitter.com/your" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="https://instagram.com/your" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+				<li><a href="https://github.com/your-username" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+				<li><a href="mailto:your@email.com" class="icon fa-envelope"><span class="label">Email</span></a></li>
+			</ul>
+			<ul class="copyright">
+				<li>&copy; Aref Mahjoub.</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</footer>
 
 		<!-- Scripts -->
-			<script src="assets/js/main.js"></script>
-
+		<script src="assets/js/main.js"></script>
 	</body>
 </html>
