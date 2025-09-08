@@ -238,19 +238,26 @@
 
 
   .skill-icons i,
-  .skill-icons .skill-icon {
-  font-size: 2rem;       /* adjust size */
-  width: 2rem;           /* for <img> fallback */
-  height: 2rem;          /* for <img> fallback */
-  margin-right: 0.75rem; /* spacing */
-  vertical-align: middle;
-  color: #fff;           /* icon color (ignored by <img>) */
+.skill-icons .skill-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;                /* adjust overall size */
+  height: 3rem;
+  margin-right: 0.75rem;
+  font-size: 2rem;
+  color: #fff;
+
+  /* frosted glass background */
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+
+  /* blur whatever’s behind this circle */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-.skill-icons .skill-icon {
-  object-fit: contain;   /* keeps your SVG scaled */
-  display: inline-block;
-}
 
 
     /* accessibility fallback for keyboard users */
@@ -451,6 +458,7 @@
   </div>
 </body>
 </html>
+
 
 
 
