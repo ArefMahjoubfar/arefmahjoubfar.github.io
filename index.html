@@ -259,16 +259,16 @@
 }
 
 
-    .glow {
+    .glow-text {
   color: #fff;
   text-decoration: none;
-  transition: box-shadow 0.3s ease, color 0.3s ease;
+  transition: text-shadow 0.3s ease;
 }
 
-.glow:hover {
-  color: #ffd700; /* Gold glow */
-  box-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700;
+.glow-text:hover {
+  text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #ffd700;
 }
+
 
 
 
@@ -286,7 +286,7 @@
     <main class="site" role="main">
       <header class="site-header" aria-label="Site header">
         <div class="brand">Aref Mahjoubfar</div>
-        <div class="sub"><a class="cta glow" role="listitem" href="/blog" aria-label="Blog"><i class="fa-solid fa-blog"></i> Blog</a></div>
+        <div class="sub"><a class="cta glow-text" role="listitem" href="/blog" aria-label="Blog"><i class="fa-solid fa-blog"></i> Blog</a></div>
 
       </header>
 
@@ -539,6 +539,7 @@
   </div>
 </body>
 </html>
+
 
 
 
