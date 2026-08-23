@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aref Mahjoubfar</title>
+  <title>Aref Mahjoubfar — Physician &amp; AI Researcher</title>
 
   <!-- Roboto -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
@@ -14,7 +14,44 @@
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.14.0/devicon.min.css"/>
 
-  <meta name="description" content="Aref Mahjoubfar — medical doctor and AI researcher. Medical AI, computer vision, LLMs, uncertainty quantification.">
+  <meta name="description" content="Aref Mahjoubfar — physician and AI researcher. Uncertainty quantification, trustworthy large language models, medical computer vision, and agentic AI for clinical decision-making.">
+  <meta name="author" content="Aref Mahjoubfar">
+
+  <!-- Link previews -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Aref Mahjoubfar — Physician &amp; AI Researcher">
+  <meta property="og:description" content="Uncertainty quantification, trustworthy large language models, and agentic AI for clinical decision-making.">
+  <meta property="og:url" content="https://arefmahjoubfar.github.io/">
+  <meta name="twitter:card" content="summary">
+
+  <!-- Structured data: helps search engines connect this page to Scholar / ORCID -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Aref Mahjoubfar",
+    "url": "https://arefmahjoubfar.github.io/",
+    "jobTitle": "Physician and AI Researcher",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Iran University of Medical Sciences"
+    },
+    "knowsAbout": [
+      "Artificial Intelligence in Medicine",
+      "Uncertainty Quantification",
+      "Large Language Models",
+      "Explainable AI",
+      "Medical Computer Vision",
+      "Agentic AI"
+    ],
+    "sameAs": [
+      "https://scholar.google.com/citations?user=R9sqUqQAAAAJ",
+      "https://orcid.org/0000-0002-1681-0994",
+      "https://github.com/ArefMahjoubfar",
+      "https://www.linkedin.com/in/aref-mahjoubfar-306a9719b/"
+    ]
+  }
+  </script>
 
   <style>
     :root{
@@ -30,6 +67,7 @@
     /* Basic reset */
     *{box-sizing:border-box}
     html,body{height:auto; margin:0; font-family:"Roboto",sans-serif; -webkit-font-smoothing:antialiased}
+    html{scroll-behavior:smooth}
     a{color:inherit; text-decoration:none}
     img{max-width:100%;display:block}
 
@@ -39,6 +77,7 @@
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
+      background-attachment: fixed;
       color:#fff;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
@@ -82,7 +121,7 @@
       padding:0.75rem 1rem;
       display:flex;
       flex-direction:column;
-      gap:1.25rem;
+      gap:1.6rem;
     }
 
     /* Header */
@@ -91,9 +130,26 @@
       justify-content:space-between;
       align-items:center;
       gap:1rem;
+      flex-wrap:wrap;
     }
     header .brand { font-weight:700; color:rgba(255,255,255,0.94); font-size:1.02rem; }
     header .sub { color: rgba(255,255,255,0.62); font-size:0.95rem; }
+
+    /* Section nav */
+    nav.section-nav { display:flex; gap:0.15rem; flex-wrap:wrap; align-items:center; }
+    nav.section-nav a{
+      color: rgba(255,255,255,0.68);
+      font-size:0.9rem;
+      font-weight:700;
+      padding:0.32rem 0.55rem;
+      border-radius:8px;
+      transition: color 180ms var(--hover-ease), background-color 180ms var(--hover-ease);
+    }
+    nav.section-nav a:hover, nav.section-nav a:focus-visible{
+      color:#fff;
+      background: rgba(28,180,149,0.10);
+      outline:none;
+    }
 
     /* Hero / About */
     .hero {
@@ -106,11 +162,56 @@
       gap:0.8rem;
     }
     .hero h1 { font-size:2rem; margin:0; font-weight:700; color:#fff; }
-    .hero .slogan { font-weight:700; color:rgba(255,255,255,0.95); }
+    .hero .slogan { font-weight:700; color:rgba(255,255,255,0.95); letter-spacing:0.01em; }
     .hero .lead { color: var(--muted); max-width:880px; font-size:0.98rem; line-height:1.55; }
+    .hero .lead strong { color:#fff; }
+
+    /* Section headings + shared prose */
+    section { scroll-margin-top:20px; }
+    h2.section-title{
+      margin:0 0 0.65rem 0;
+      font-size:1.05rem;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      gap:0.5rem;
+    }
+    h2.section-title::before{
+      content:"";
+      width:3px;
+      height:1rem;
+      border-radius:2px;
+      background:var(--accent);
+      flex-shrink:0;
+    }
+    .prose { color:var(--muted); font-size:0.96rem; line-height:1.65; max-width:900px; }
+    .prose p { margin:0 0 0.75rem 0; }
+    .prose p:last-child { margin-bottom:0; }
+    .prose strong { color:rgba(255,255,255,0.94); }
+    .prose ul { margin:0.3rem 0 0.75rem 0; padding-left:1.15rem; }
+    .prose li { margin-bottom:0.3rem; }
+    .prose a.inline-link { color:var(--accent); font-weight:700; }
+    .prose a.inline-link:hover { text-decoration:underline; }
+
+    .sub-title{
+      display:block;
+      margin:1rem 0 0.35rem 0;
+      font-weight:700;
+      color:rgba(255,255,255,0.94);
+      font-size:0.99rem;
+    }
+    .sub-title:first-child { margin-top:0; }
+
+    .rule{
+      border:0;
+      height:1px;
+      background:rgba(255,255,255,0.06);
+      margin:1.1rem 0;
+    }
 
     /* chips */
     .keywords{display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;margin-top:0.5rem;}
+    .keywords.left{justify-content:flex-start;}
     .chip{
       background:var(--chip-bg);
       border:1px solid var(--chip-border);
@@ -162,9 +263,13 @@
 
     .card-top { display:flex; align-items:center; gap:0.8rem; }
     .icon-wrap{ width:52px; height:52px; border-radius:10px; background: rgba(255,255,255,0.03); display:flex; align-items:center; justify-content:center; font-size:1.25rem; color:var(--accent); flex-shrink:0; }
+    .icon-wrap img{ width:26px; height:26px; }
     .card-title{ font-weight:700; font-size:1.02rem; color:#fff; }
+    .card-sub{ font-size:0.86rem; color:var(--muted); }
     .card-desc{ color:var(--muted); font-size:0.92rem; line-height:1.5; flex:1; }
-    .card-tags{ display:flex; gap:0.45rem; flex-wrap:wrap; margin-top:0.45rem; }
+    .card-desc ul{ margin:0; padding-left:1.1rem; }
+    .card-desc li{ margin-bottom:0.35rem; }
+    .card-tags{ display:flex; gap:0.45rem; flex-wrap:wrap; margin-top:0.45rem; align-items:center; }
     .card-tag{
       background:transparent;
       border:1px solid rgba(255,255,255,0.06);
@@ -186,10 +291,91 @@
       outline: none;
     }
 
+    /* "Read the paper →" style link inside a card */
+    a.card-link{
+      color:var(--accent);
+      font-weight:700;
+      font-size:0.86rem;
+      display:inline-flex;
+      align-items:center;
+      gap:0.3rem;
+      transition: gap 180ms var(--hover-ease);
+    }
+    a.card-link:hover, a.card-link:focus-visible{ gap:0.55rem; outline:none; text-decoration:underline; }
+
+    /* Highlight card (current work) */
+    .highlight-card{
+      border-color: rgba(28,180,149,0.16);
+      background: linear-gradient(180deg, rgba(28,180,149,0.035), rgba(255,255,255,0.008));
+      text-align:left;
+      width:100%;
+      max-width:900px;
+    }
+
+    /* Research blocks */
+    .research-block{
+      border-left:2px solid rgba(28,180,149,0.28);
+      padding-left:1rem;
+      margin-bottom:1.35rem;
+    }
+    .research-block:last-child{ margin-bottom:0; }
+    .research-block h3{
+      margin:0 0 0.4rem 0;
+      font-size:0.99rem;
+      color:#fff;
+      font-weight:700;
+    }
+
+    /* Publications */
+    .pub-year{
+      font-weight:700;
+      color:var(--accent);
+      font-size:0.9rem;
+      letter-spacing:0.06em;
+      margin:1.1rem 0 0.5rem 0;
+    }
+    .pub-year:first-child{ margin-top:0.2rem; }
+    .pub-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:0.8rem; }
+    .pub{
+      color:var(--muted);
+      font-size:0.92rem;
+      line-height:1.55;
+      padding-left:1.6rem;
+      position:relative;
+    }
+    .pub::before{
+      content:counter(pubcounter) ".";
+      counter-increment:pubcounter;
+      position:absolute;
+      left:0;
+      top:0;
+      color:rgba(255,255,255,0.35);
+      font-weight:700;
+      font-size:0.88rem;
+    }
+    .pub-list{ counter-reset:none; }
+    #publications{ counter-reset:pubcounter; }
+    .pub .me{ color:#fff; font-weight:700; }
+    .pub .pub-title{ color:rgba(255,255,255,0.92); }
+    .pub .pub-venue{ font-style:italic; }
+    .pub a{ color:var(--accent); font-weight:700; }
+    .pub a:hover{ text-decoration:underline; }
+
+    /* Expertise rows */
+    .exp-row{ margin-bottom:0.75rem; }
+    .exp-label{
+      color:rgba(255,255,255,0.94);
+      font-weight:700;
+      font-size:0.92rem;
+      margin-bottom:0.25rem;
+    }
+    .exp-value{ color:var(--muted); font-size:0.9rem; line-height:1.5; }
+
     /* contact */
     .contact { display:flex; flex-direction:column; gap:0.6rem; align-items:center; text-align:center; }
     .contact .links{ display:flex; gap:0.6rem; flex-wrap:wrap; justify-content:center; }
-    .contact a.cta{
+    .contact a.cta,
+    .hero-links a.cta{
       padding:0.55rem 0.85rem;
       background: rgba(255,255,255,0.03);
       border:1px solid rgba(255,255,255,0.045);
@@ -199,19 +385,23 @@
       display:inline-flex;
       gap:0.5rem;
       align-items:center;
+      font-size:0.92rem;
 
       /* interaction */
       transition: transform 200ms var(--hover-ease), box-shadow 200ms var(--hover-ease), background-color 200ms var(--hover-ease), border-color 200ms var(--hover-ease);
       will-change: transform, box-shadow;
     }
     .contact a.cta:hover,
-    .contact a.cta:focus-visible {
+    .contact a.cta:focus-visible,
+    .hero-links a.cta:hover,
+    .hero-links a.cta:focus-visible {
       transform: translateY(-5px);
       box-shadow: 0 18px 40px rgba(28,180,149,0.10);
       border-color: rgba(28,180,149,0.18);
       background: linear-gradient(180deg, rgba(28,180,149,0.04), rgba(255,255,255,0.01));
       outline: none;
     }
+    .hero-links{ display:flex; gap:0.6rem; flex-wrap:wrap; justify-content:center; margin-top:0.2rem; }
 
     /* keyboard-visible focus */
     .chip:focus-visible,
@@ -234,8 +424,17 @@
       .hero h1{ font-size:1.5rem; }
       .card{ min-height:auto; }
       .chip, .card-tag, .contact a.cta { transform:none; } /* avoid translation crowding on small screens */
+      header.site-header{ flex-direction:column; align-items:flex-start; gap:0.5rem; }
+      nav.section-nav{ gap:0; }
+      nav.section-nav a{ padding:0.3rem 0.4rem; font-size:0.85rem; }
+      body{ background-attachment:scroll; }
     }
 
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      *{ transition:none !important; }
+      .card:hover, .chip:hover, .card-tag:hover, .contact a.cta:hover{ transform:none; }
+    }
 
 .skill-icons i,
 .skill-icons .skill-icon {
@@ -246,6 +445,7 @@
   width: 2rem;                /* adjust overall size */
   height: 2rem;
   margin-right: 0.75rem;
+  margin-bottom: 0.5rem;
   font-size: 2rem;
   color: #fff;
 
@@ -253,11 +453,12 @@
   background: rgba(255, 255, 255, 0.4);
   border-radius: 40%;
 
-  /* blur whatever’s behind this circle */
+  /* blur whatever's behind this circle */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
+.skill-icons { display:flex; flex-wrap:wrap; align-items:center; }
 
     .glow-text {
   color: #fff;
@@ -268,11 +469,6 @@
 .glow-text:hover {
   text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #ffd700;
 }
-
-
-
-
-
 
     /* accessibility fallback for keyboard users */
     .chip, .card-tag, .contact a.cta { cursor: pointer; }
@@ -286,251 +482,495 @@
     <main class="site" role="main">
       <header class="site-header" aria-label="Site header">
         <div class="brand">Aref Mahjoubfar</div>
-        <div class="sub"><a class="cta glow-text" role="listitem" href="/blog" aria-label="Blog"><i class="fa-solid fa-blog"></i> Blog</a></div>
-
+        <nav class="section-nav" aria-label="Section navigation">
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#projects">Projects</a>
+          <a href="#publications">Publications</a>
+          <a href="#expertise">Expertise</a>
+          <a class="glow-text" href="/blog" aria-label="Blog"><i class="fa-solid fa-blog"></i> Blog</a>
+        </nav>
       </header>
 
-      <!-- HERO / ABOUT -->
-      <section class="hero" aria-labelledby="about-heading">
-        <h1 id="about-heading">Hi! This is Aref Mahjoubfar. 👋</h1>
-        <div class="slogan">A physician–researcher specializing in Artificial Intelligence, developing Medical AI applications and automation</div>
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="hero-heading">
+        <h1 id="hero-heading">Hi! This is Aref Mahjoubfar. 👋</h1>
+        <div class="slogan">Physician · AI Researcher · Medical AI Engineer</div>
 
-        <p class="lead">This webpage aims to help you know more about me—my interests, research, projects, and insights.</p>
-        
-        <div style="max-width:900px; color:var(--muted); text-align:left; font-size:0.96rem; line-height:1.6;">
+        <p class="lead">
+          I am a physician and researcher working at the intersection of medicine and artificial
+          intelligence. My research asks a single practical question:
+          <strong>when should a clinical AI system be trusted, and how do we measure that?</strong>
+          I work on uncertainty quantification and calibration for large language models,
+          explainable and rule-grounded decision policies, medical computer vision, and the
+          architecture of agentic AI systems for clinical environments.
+        </p>
 
-        <!-- Current works -->
-          <article class="card" role="listitem" tabindex="0" aria-labelledby="p1-title">
-            <div class="card-top">
-              <div class="icon-wrap" aria-hidden="true"><img src="assets/icons/icons8-probability-68.png"></img></div>
-              <div>
-                <div id="p1-title" class="card-title">I'm currently working on:</div>
-                <div style="font-size:0.86rem; color:var(--muted)">Trustworthy AI</div>
-              </div>
-            </div>
-            <div class="card-desc">
-              <label for="toggle-uq" class="text">Uncertainty quantification utilizing token-level log-probabilities for sequences in a variety of tasks.</label>
-              <label for="toggle-uq" class="text">Leveraging SHAP explanation models to calibrate LLM confidence scores.</label>
-              <label for="toggle-uq" class="text">Rule-based (logically-grounded) actions in terms of confidence scores and explanations.</label>
-            </div>
-            <div class="card-tags" aria-hidden="false">
-              <button class="card-tag" type="button">LLMs</button>
-              <button class="card-tag" type="button">Confidence Score</button>
-              <button class="card-tag" type="button">LOG-PROB</button>
-              <button class="card-tag" type="button">SHAP</button>
-              <button class="card-tag" type="button">PROLOG</button>
-              
-            </div>
-          </article>
-          
-          <hr></hr>
-          <strong style="margin-top:1rem,">My Journey</strong>
-          <p style="margin-top:0.6rem;">
-            My fascination with technology began in childhood, when I started designing custom websites from scratch. As I grew older, I explored application development with C#, further deepening my interest in software and automation.
-          </p>
-          <p>
-            During my medical education, I teamed up with a group of friends to explore machine learning with a focus on computer vision in medical practice. This led to a thesis project that involved diagnosing Acute Lymphoblastic and Myeloblastic Leukemia (ALL and AML) through the analysis of blood and bone marrow slide images, with a dataset we collected over the span of one year. Over time, I honed my skills in Python 🐍 and worked extensively with machine learning libraries like PyTorch and TensorFlow. More recently, I've expanded into Natural Language Processing and working with Large Language Models, actively designing models to push the boundaries of Medical AI.
-          </p>
-
-          <strong style="display:block; margin-top:0.75rem;">My Vision</strong>
-          <p style="margin-top:0.6rem;">
-            Life moves on, and I'm genuinely excited about the future and the next wave of technological innovations (This is what immortality is for 😉). I firmly believe in open science and the importance of combining our efforts, step by step, to lay the foundations for tomorrow's breakthroughs. This is how I can experience more in less time:)
-          </p>
-
-          <strong style="display:block; margin-top:0.75rem;">Tools I've been working with:</strong>
-        <div class="skill-icons" style="margin-top:0.5rem;">
-          <i class="devicon-python-plain colored" title="Python"></i>
-          <i class="devicon-tensorflow-original colored" title="TensorFlow"></i>
-
-          <img
-            src="assets/icons/pytorch-icon.svg"
-            alt="PyTorch"
-            title="PyTorch"
-            class="skill-icon"
-          />
-          
-          <img
-            src="assets/icons/langchain-color.svg"
-            alt="LangChain"
-            title="LangChain"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/langgraph-color.svg"
-            alt"LangGraph"
-            title="LangChain"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/langsmith-color.svg"
-            alt"LangSmith"
-            title="LangSmith"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/aws-svgrepo-com.svg"
-            alt"AWS"
-            title="AWS"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/google-cloud-svgrepo-com.svg"
-            alt"GCP"
-            title="Google Cloud"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/azure-svgrepo-com.svg"
-            alt"Azure"
-            title="Azure"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/mlflow.svg"
-            alt"MLFlow"
-            title="MLFLow"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/kubernetes-svgrepo-com.svg"
-            alt"Kubernetes"
-            title="Kubernetes"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/docker-svgrepo-com.svg"
-            alt"Docker"
-            title="Docker"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/vscode2-svgrepo-com.svg"
-            alt"VSC"
-            title="VSCODE"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/googlecolab-svgrepo-com.svg"
-            alt"GC"
-            title="Google Colab"
-            class="skill-icon"
-          />
-
-          <img
-            src="assets/icons/ubuntu-icon.svg"
-            alt"Ubuntu"
-            title="Ubuntu"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/git-svgrepo-com.svg"
-            alt"Git"
-            title="Git"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/database-svgrepo-com.svg"
-            alt"Database"
-            title="DB"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/dicom.png"
-            alt"DICOM"
-            title="DICOM"
-            class="skill-icon"
-          />
-          
-          <i class="devicon-html5-plain colored" title="HTML5"></i>
-          <i class="devicon-css3-plain colored" title="CSS3"></i>
+        <div class="hero-links">
+          <a class="cta" href="https://scholar.google.com/citations?hl=en&amp;user=R9sqUqQAAAAJ"><i class="fa-solid fa-graduation-cap"></i> Google Scholar</a>
+          <a class="cta" href="https://github.com/ArefMahjoubfar"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a class="cta" href="https://www.linkedin.com/in/aref-mahjoubfar-306a9719b/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a class="cta" href="https://orcid.org/0000-0002-1681-0994"><i class="fa-brands fa-orcid"></i> ORCID</a>
         </div>
-          
 
-
-          
-        </div>
+        <!-- Current work highlight -->
+        <article class="card highlight-card" aria-labelledby="current-title">
+          <div class="card-top">
+            <div class="icon-wrap" aria-hidden="true"><img src="assets/icons/icons8-probability-68.png" alt=""></div>
+            <div>
+              <div id="current-title" class="card-title">Currently working on</div>
+              <div class="card-sub">Trustworthy AI for clinical decision-making</div>
+            </div>
+          </div>
+          <div class="card-desc">
+            <ul>
+              <li>Uncertainty quantification using token-level log-probabilities over generated sequences.</li>
+              <li>SHAP-based explanation as an independent signal for calibrating LLM confidence.</li>
+              <li>Rule-based, logically grounded actions derived from confidence scores and explanations.</li>
+              <li>Reflective, memory-augmented agents for open-world clinical case reasoning.</li>
+            </ul>
+          </div>
+          <div class="card-tags">
+            <button class="card-tag" type="button">LLMs</button>
+            <button class="card-tag" type="button">Confidence Score</button>
+            <button class="card-tag" type="button">LOG-PROB</button>
+            <button class="card-tag" type="button">SHAP</button>
+            <button class="card-tag" type="button">PROLOG</button>
+            <button class="card-tag" type="button">AI Agents</button>
+          </div>
+        </article>
 
         <div class="keywords" style="margin-top:0.6rem;">
           <button class="chip" type="button">Medical AI</button>
           <button class="chip" type="button">Computer Vision</button>
           <button class="chip" type="button">LLMs</button>
           <button class="chip" type="button">Uncertainty</button>
+          <button class="chip" type="button">Agentic AI</button>
         </div>
       </section>
 
-      <!-- Projects -->
-      <section aria-labelledby="projects-heading">
-        <h2 id="projects-heading" style="margin:0 0 0.65rem 0; font-size:1.05rem; color:#fff;">Featured projects</h2>
+      <!-- ABOUT -->
+      <section id="about" aria-labelledby="about-heading">
+        <h2 id="about-heading" class="section-title">About</h2>
+        <div class="prose">
+          <p>
+            My interest in computing came long before my medical training. I started designing
+            custom websites from scratch as a teenager, moved into application development with
+            C#, and gradually shifted toward machine learning — well before it became the obvious
+            thing to study.
+          </p>
+          <p>
+            During my medical education I teamed up with a group of friends to explore computer
+            vision in clinical practice. That work became my thesis: diagnosing acute
+            lymphoblastic and myeloblastic leukemia (ALL and AML) from blood and bone marrow slide
+            images, using a dataset we collected ourselves over the span of a year — end to end,
+            from clinical data collection through preprocessing, model development, and evaluation.
+          </p>
+          <p>
+            Since then my work has moved from images to language. Working with collaborators at
+            the Trustworthy AI Lab at Ontario Tech University, Mount Sinai, and Iran University of
+            Medical Sciences, I have studied how large language models express confidence in
+            medical tasks — whether that confidence means anything, how badly it is calibrated,
+            and what a clinical system should actually <em>do</em> with it.
+          </p>
+          <p>
+            That last part is what holds my attention now. A probability is not a decision. My
+            current research is about closing the gap between the two: translating token-level
+            uncertainty signals into explicit, auditable policies that decide when a model may
+            answer, when it must defer, and when it must escalate to a clinician.
+          </p>
+          <p>
+            I combine a clinical background with hands-on engineering — Python 🐍, PyTorch, LLM
+            evaluation pipelines, containerized reproducible experiments — because I think the
+            algorithmic and the infrastructural questions in medical AI are the same question seen
+            from two sides.
+          </p>
+
+          <span class="sub-title">My Vision</span>
+          <p>
+            Life moves on, and I am genuinely excited about the future and the next wave of
+            technological innovation (this is what immortality is for 😉). I firmly believe in
+            open science and in combining our efforts, step by step, to lay the foundations for
+            tomorrow's breakthroughs. This is how I get to experience more in less time :)
+          </p>
+
+          <span class="sub-title">Research Interests</span>
+        </div>
+        <div class="keywords left" style="margin-top:0.5rem;">
+          <button class="chip" type="button">Trustworthy AI for Medicine</button>
+          <button class="chip" type="button">Uncertainty Quantification &amp; Calibration</button>
+          <button class="chip" type="button">LLMs in Healthcare</button>
+          <button class="chip" type="button">Explainable AI</button>
+          <button class="chip" type="button">Medical Computer Vision</button>
+          <button class="chip" type="button">Clinical Decision Support</button>
+          <button class="chip" type="button">Agentic &amp; Multi-Agent Systems</button>
+          <button class="chip" type="button">Human–AI Collaboration</button>
+        </div>
+      </section>
+
+      <!-- RESEARCH -->
+      <section id="research" aria-labelledby="research-heading">
+        <h2 id="research-heading" class="section-title">Current research</h2>
+        <div class="prose">
+
+          <div class="research-block">
+            <h3>Uncertainty quantification in medical LLMs</h3>
+            <p>
+              I study how to measure — and how to use — the uncertainty in large language model
+              outputs on medical tasks. This line of work connects:
+            </p>
+            <ul>
+              <li>token-level log-probabilities and sequence-level confidence measures</li>
+              <li>semantic entropy, self-consistency, and agreement across paraphrases</li>
+              <li>calibration metrics (AUROC, Brier score, Expected Calibration Error) and the decision thresholds derived from them</li>
+              <li>explanation methods such as SHAP as a second, independent signal</li>
+              <li>selective prediction: knowing when the right answer is <em>"I don't know"</em></li>
+            </ul>
+            <p>
+              Our review of the field,
+              <a class="inline-link" href="https://arxiv.org/abs/2504.05278">The challenge of uncertainty quantification of large language models in medicine</a>,
+              frames uncertainty not as a defect to be removed but as information to be
+              communicated. A follow-up study evaluated five LLMs across 156 experimental
+              configurations on a Persian medical exam dataset, and found that chain-of-thought
+              prompting improves accuracy while <em>worsening</em> overconfidence — and that
+              emotional prompting makes it worse still. Accuracy and calibration have to be
+              optimized together; improving one can silently damage the other.
+            </p>
+          </div>
+
+          <div class="research-block">
+            <h3>From confidence to care: rule-grounded clinical escalation</h3>
+            <p>
+              Reporting a confidence score is not the same as acting on it. In
+              <em>From Confidence to Care</em> (IEEE CASCON 2025), we map confidence and
+              robustness signals onto a transparent, logic-based policy that outputs discrete
+              care levels aligned with recognizable triage standards (ESI, CTAS, NEWS2),
+              together with a human-readable trace explaining why each decision was made.
+            </p>
+            <p>
+              The goal is an AI system whose uncertainty is not a number in a log file but a
+              governing component of its behavior — auditable by a clinician, and answerable for.
+            </p>
+          </div>
+
+          <div class="research-block">
+            <h3>Reflective and agentic AI for clinical reasoning</h3>
+            <p>
+              My current work concerns AI agents that reason over clinical cases rather than
+              single model calls: an LLM diagnostic core paired with an explicit critic, a
+              reflector, a deterministic interpreter, and multi-tier memory that accumulates
+              reasoning strategies across cases.
+            </p>
+            <p>
+              The questions I find most interesting here are about behavior over time. Does
+              reflection produce durable improvement, or drift? What happens when an agent learns
+              from incomplete, unlabeled, open-world cases instead of clean labeled ones? And what
+              does that cost in latency, throughput, and reliability when the system has to run in
+              a real clinical setting?
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" aria-labelledby="projects-heading">
+        <h2 id="projects-heading" class="section-title">Selected projects</h2>
 
         <div class="projects" role="list">
           <!-- Card 1 -->
           <article class="card" role="listitem" tabindex="0" aria-labelledby="p1-title">
             <div class="card-top">
-              <div class="icon-wrap" aria-hidden="true"><i class="fa-solid fa-microscope"></i></div>
+              <div class="icon-wrap" aria-hidden="true"><i class="fa-solid fa-brain"></i></div>
               <div>
-                <div id="p1-title" class="card-title">Leukemia Slide Classifier</div>
-                <div style="font-size:0.86rem; color:var(--muted)">Classification of ALL, AML and benign cases utilizing BMA & PBS images.</div>
+                <div id="p1-title" class="card-title">Uncertainty &amp; Calibration in Medical LLMs</div>
+                <div class="card-sub">Can a model's confidence tell us when to believe it?</div>
               </div>
             </div>
             <div class="card-desc">
-              Trained and evaluated lightweight CNNs on a year-collected dataset of bone marrow aspiration and peripheral blood smear images. Emphasis on reproducible pipelines and clinically relevant evaluation metrics.
+              Evaluation of multiple large language models on advanced medical question-answering,
+              using accuracy, AUROC, Brier score, Expected Calibration Error, and mean confidence
+              to test whether stated or computed confidence separates correct from incorrect answers.
             </div>
-            <div class="card-tags" aria-hidden="false">
+            <div class="card-tags">
+              <button class="card-tag" type="button">LLMs</button>
+              <button class="card-tag" type="button">Calibration</button>
+              <button class="card-tag" type="button">SHAP</button>
+            </div>
+            <a class="card-link" href="https://arxiv.org/abs/2504.05278">Read the paper <i class="fa-solid fa-arrow-right"></i></a>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card" role="listitem" tabindex="0" aria-labelledby="p2-title">
+            <div class="card-top">
+              <div class="icon-wrap" aria-hidden="true"><i class="fa-solid fa-comments"></i></div>
+              <div>
+                <div id="p2-title" class="card-title">Prompt Engineering for Accuracy <em>and</em> Confidence</div>
+                <div class="card-sub">156 configurations, five models, one uncomfortable finding.</div>
+              </div>
+            </div>
+            <div class="card-desc">
+              A systematic study of how prompting strategy, temperature, and confidence-rating
+              scale affect both correctness and calibration in medical LLMs — showing that the
+              techniques that raise accuracy often make models more overconfident.
+            </div>
+            <div class="card-tags">
+              <button class="card-tag" type="button">Prompt Engineering</button>
+              <button class="card-tag" type="button">LLM Evaluation</button>
+              <button class="card-tag" type="button">Medical QA</button>
+            </div>
+            <a class="card-link" href="https://arxiv.org/abs/2506.00072">Read the paper <i class="fa-solid fa-arrow-right"></i></a>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card" role="listitem" tabindex="0" aria-labelledby="p3-title">
+            <div class="card-top">
+              <div class="icon-wrap" aria-hidden="true"><i class="fa-solid fa-scale-balanced"></i></div>
+              <div>
+                <div id="p3-title" class="card-title">Confidence-to-Care Escalation</div>
+                <div class="card-sub">Turning probabilities into auditable clinical actions.</div>
+              </div>
+            </div>
+            <div class="card-desc">
+              A rule-grounded policy layer that converts model confidence and robustness signals
+              into discrete escalation levels with a human-readable reasoning trace, aligned with
+              established triage scales.
+            </div>
+            <div class="card-tags">
+              <button class="card-tag" type="button">Trustworthy AI</button>
+              <button class="card-tag" type="button">PROLOG</button>
+              <button class="card-tag" type="button">Decision Support</button>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="card" role="listitem" tabindex="0" aria-labelledby="p4-title">
+            <div class="card-top">
+              <div class="icon-wrap" aria-hidden="true"><i class="fa-solid fa-microscope"></i></div>
+              <div>
+                <div id="p4-title" class="card-title">Leukemia Slide Classifier</div>
+                <div class="card-sub">Classification of ALL, AML and benign cases from BMA &amp; PBS images.</div>
+              </div>
+            </div>
+            <div class="card-desc">
+              Trained and evaluated lightweight CNNs on a year-collected dataset of bone marrow
+              aspiration and peripheral blood smear images. Emphasis on reproducible pipelines and
+              clinically relevant evaluation metrics. This was the subject of my medical thesis.
+            </div>
+            <div class="card-tags">
               <button class="card-tag" type="button">ResNet-18</button>
               <button class="card-tag" type="button">Segmentation</button>
               <button class="card-tag" type="button">DeepLab v3</button>
             </div>
           </article>
 
-          <!-- Card 2 -->
-          <article class="card" role="listitem" tabindex="0" aria-labelledby="p2-title">
+          <!-- Card 5 -->
+          <article class="card" role="listitem" tabindex="0" aria-labelledby="p5-title">
             <div class="card-top">
-              <div class="icon-wrap" aria-hidden="true"><i class="fa-solid fa-brain"></i></div>
+              <div class="icon-wrap" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i></div>
               <div>
-                <div id="p2-title" class="card-title">Uncertainty in LLMs</div>
-                <div style="font-size:0.86rem; color:var(--muted)">Narrative review + experiments on uncertainty quantification for clinical LLM tasks.</div>
+                <div id="p5-title" class="card-title">Reflective Medical Reasoning Agents</div>
+                <div class="card-sub">Architecture, memory, and behavioral drift in clinical AI agents.</div>
               </div>
             </div>
             <div class="card-desc">
-              Research on calibrating and quantifying uncertainty in large language models used for clinical extraction and decision support — combining log-prob analyses, SHAP explainers, and calibration metrics.
+              Ongoing work on memory-augmented reflective agents for open-world clinical case
+              reasoning, studying how reflection changes agent behavior over time and what it
+              costs in system resources.
             </div>
-            <div class="card-tags" aria-hidden="false">
-              <button class="card-tag" type="button">LLMs</button>
-              <button class="card-tag" type="button">SHAP</button>
-              <button class="card-tag" type="button">Calibration</button>
+            <div class="card-tags">
+              <button class="card-tag" type="button">AI Agents</button>
+              <button class="card-tag" type="button">Reflection</button>
+              <button class="card-tag" type="button">Systems Architecture</button>
             </div>
           </article>
 
-          <!-- Card 3 -->
-          <article class="card" role="listitem" tabindex="0" aria-labelledby="p3-title">
+          <!-- Card 6 -->
+          <article class="card" role="listitem" tabindex="0" aria-labelledby="p6-title">
             <div class="card-top">
               <div class="icon-wrap" aria-hidden="true"><i class="fa-solid fa-code"></i></div>
               <div>
-                <div id="p3-title" class="card-title">Tooling & Reproducibility</div>
-                <div style="font-size:0.86rem; color:var(--muted)">Scripts & notebooks for reproducible ML research (PyTorch/TensorFlow).</div>
+                <div id="p6-title" class="card-title">Tooling &amp; Reproducibility</div>
+                <div class="card-sub">Scripts &amp; notebooks for reproducible ML research.</div>
               </div>
             </div>
             <div class="card-desc">
-              Standardized preprocessing, finetuning pipelines, and evaluation scripts aimed to make experiments repeatable and shareable. Focus on clear notebooks and open-science-friendly licenses.
+              Standardized preprocessing, finetuning pipelines, and evaluation scripts aimed at
+              making experiments repeatable and shareable. Focus on clear notebooks and
+              open-science-friendly licenses.
             </div>
-            <div class="card-tags" aria-hidden="false">
+            <div class="card-tags">
               <button class="card-tag" type="button">PyTorch</button>
-              <button class="card-tag" type="button">Notebooks</button>
+              <button class="card-tag" type="button">Docker</button>
               <button class="card-tag" type="button">Open Science</button>
             </div>
+            <a class="card-link" href="https://github.com/ArefMahjoubfar">Explore my GitHub <i class="fa-solid fa-arrow-right"></i></a>
           </article>
         </div>
       </section>
 
-      <!-- Contact -->
-      <section class="contact" aria-labelledby="contact-heading">
-        <h2 id="contact-heading" style="margin:0; font-size:1.02rem;">Connect</h2>
-        <p style="color:var(--muted); margin:0;">ORCID · Google Scholar · LinkedIn · Email</p>
+      <!-- PUBLICATIONS -->
+      <section id="publications" aria-labelledby="publications-heading">
+        <h2 id="publications-heading" class="section-title">Publications</h2>
+        <div class="prose" style="margin-bottom:0.4rem;">
+          <p>
+            My published work spans artificial intelligence in medicine, medical imaging, machine
+            learning, and clinical evidence synthesis. A complete and current list is on my
+            <a class="inline-link" href="https://scholar.google.com/citations?hl=en&amp;user=R9sqUqQAAAAJ">Google Scholar profile</a>.
+          </p>
+        </div>
+
+        <div class="pub-year">2025</div>
+        <ol class="pub-list">
+          <li class="pub">
+            Atf Z, Safavi-Naini SAA, Lewis PR, <span class="me">Mahjoubfar A</span>, Naderi N, Savage TR, Soroush A.
+            <span class="pub-title">The challenge of uncertainty quantification of large language models in medicine.</span>
+            <span class="pub-venue">arXiv:2504.05278.</span>
+            <a href="https://arxiv.org/abs/2504.05278">[arXiv]</a>
+          </li>
+          <li class="pub">
+            Naderi N, Atf Z, Lewis PR, <span class="me">Mahjoubfar A</span>, Safavi-Naini SAA, Soroush A.
+            <span class="pub-title">Evaluating prompt engineering techniques for accuracy and confidence elicitation in medical LLMs.</span>
+            <span class="pub-venue">arXiv:2506.00072.</span>
+            <a href="https://arxiv.org/abs/2506.00072">[arXiv]</a>
+          </li>
+          <li class="pub">
+            Atf Z, <span class="me">Mahjoubfar A</span>, Lewis PR.
+            <span class="pub-title">From confidence to care: rule-based escalation for trustworthy clinical AI.</span>
+            <span class="pub-venue">IEEE International Conference on Collaborative Advances in Software and Computing (CASCON), 2025.</span>
+          </li>
+          <li class="pub">
+            Azizi S, Tabrizi T, Vatankhah M, Naghiloo F, Ganji Z, <span class="me">Mahjoubfar A</span>.
+            <span class="pub-title">Recent machine learning approaches in diagnosing leukemia using bone marrow slides: a systematic review.</span>
+            <span class="pub-venue">Authorea, 2025.</span>
+          </li>
+        </ol>
+
+        <div class="pub-year">2023</div>
+        <ol class="pub-list">
+          <li class="pub">
+            Noori M, Azizi S, Abbasi Varaki F, Fayyaz F, <span class="me">Mahjoubfar A</span>, et al.
+            <span class="pub-title">Efficacy and safety of immune checkpoint inhibitors for patients with prostate cancer: a systematic review and meta-analysis.</span>
+            <span class="pub-venue">Frontiers in Immunology, 14:1181051.</span>
+            <a href="https://doi.org/10.3389/fimmu.2023.1181051">[journal]</a>
+          </li>
+          <li class="pub">
+            Abbasi Varaki F, Azizi S, <span class="me">Mahjoubfar A</span>.
+            <span class="pub-title">The accuracy of convolutional neural network–long short-term memory (CNN-LSTM) in diagnosing different types of acute lymphocytic leukemia based on peripheral blood smear.</span>
+            <span class="pub-venue">First International Congress of Artificial Intelligence in Medical Sciences.</span>
+          </li>
+        </ol>
+
+        <div class="pub-year">2022</div>
+        <ol class="pub-list">
+          <li class="pub">
+            Noori M, Azizi S, Fayyaz F, <span class="me">Mahjoubfar A</span>, Rezaei N.
+            <span class="pub-title">Immune checkpoint inhibitors plus chemotherapy versus chemotherapy alone as first-line therapy for advanced gastric and esophageal cancers: a systematic review and meta-analysis.</span>
+            <span class="pub-venue">International Immunopharmacology, 113:109317.</span>
+            <a href="https://doi.org/10.1016/j.intimp.2022.109317">[journal]</a>
+          </li>
+        </ol>
+
+        <div class="prose" style="margin-top:1rem;">
+          <a class="inline-link" href="https://scholar.google.com/citations?hl=en&amp;user=R9sqUqQAAAAJ">View all publications on Google Scholar →</a>
+        </div>
+      </section>
+
+      <!-- EXPERTISE -->
+      <section id="expertise" aria-labelledby="expertise-heading">
+        <h2 id="expertise-heading" class="section-title">Technical expertise</h2>
+
+        <div class="prose">
+          <div class="exp-row">
+            <div class="exp-label">Languages &amp; tools</div>
+            <div class="exp-value">Python · Git · Jupyter · SQL</div>
+          </div>
+          <div class="exp-row">
+            <div class="exp-label">Machine learning</div>
+            <div class="exp-value">PyTorch · TensorFlow · scikit-learn · Deep learning · Computer vision · CNNs · CNN-LSTM</div>
+          </div>
+          <div class="exp-row">
+            <div class="exp-label">Large language models</div>
+            <div class="exp-value">LLM evaluation pipelines · Prompt engineering · Structured outputs · Log-probability and confidence analysis · Agentic and multi-agent systems · LangChain / LangGraph</div>
+          </div>
+          <div class="exp-row">
+            <div class="exp-label">Evaluation &amp; explainability</div>
+            <div class="exp-value">Calibration (ECE, Brier score) · AUROC · SHAP · Selective prediction · Bootstrapped confidence intervals · Ablation and comparative study design</div>
+          </div>
+          <div class="exp-row">
+            <div class="exp-label">Research &amp; clinical data</div>
+            <div class="exp-value">Medical imaging · Clinical dataset construction · Systematic review and meta-analysis · Reproducible research pipelines</div>
+          </div>
+          <div class="exp-row">
+            <div class="exp-label">Systems &amp; infrastructure</div>
+            <div class="exp-value">Docker · Cloud platforms (AWS, GCP, Azure) · GPU computing · MLflow experiment tracking</div>
+          </div>
+
+          <span class="sub-title">Tools I've been working with</span>
+        </div>
+
+        <div class="skill-icons" style="margin-top:0.5rem;">
+          <i class="devicon-python-plain colored" title="Python"></i>
+          <i class="devicon-tensorflow-original colored" title="TensorFlow"></i>
+          <img src="assets/icons/pytorch-icon.svg" alt="PyTorch" title="PyTorch" class="skill-icon" />
+          <img src="assets/icons/langchain-color.svg" alt="LangChain" title="LangChain" class="skill-icon" />
+          <img src="assets/icons/langgraph-color.svg" alt="LangGraph" title="LangGraph" class="skill-icon" />
+          <img src="assets/icons/langsmith-color.svg" alt="LangSmith" title="LangSmith" class="skill-icon" />
+          <img src="assets/icons/aws-svgrepo-com.svg" alt="AWS" title="AWS" class="skill-icon" />
+          <img src="assets/icons/google-cloud-svgrepo-com.svg" alt="Google Cloud" title="Google Cloud" class="skill-icon" />
+          <img src="assets/icons/azure-svgrepo-com.svg" alt="Azure" title="Azure" class="skill-icon" />
+          <img src="assets/icons/mlflow.svg" alt="MLflow" title="MLflow" class="skill-icon" />
+          <img src="assets/icons/kubernetes-svgrepo-com.svg" alt="Kubernetes" title="Kubernetes" class="skill-icon" />
+          <img src="assets/icons/docker-svgrepo-com.svg" alt="Docker" title="Docker" class="skill-icon" />
+          <img src="assets/icons/vscode2-svgrepo-com.svg" alt="VS Code" title="VS Code" class="skill-icon" />
+          <img src="assets/icons/googlecolab-svgrepo-com.svg" alt="Google Colab" title="Google Colab" class="skill-icon" />
+          <img src="assets/icons/ubuntu-icon.svg" alt="Ubuntu" title="Ubuntu" class="skill-icon" />
+          <img src="assets/icons/git-svgrepo-com.svg" alt="Git" title="Git" class="skill-icon" />
+          <img src="assets/icons/database-svgrepo-com.svg" alt="Databases" title="Databases" class="skill-icon" />
+          <img src="assets/icons/dicom.png" alt="DICOM" title="DICOM" class="skill-icon" />
+          <i class="devicon-html5-plain colored" title="HTML5"></i>
+          <i class="devicon-css3-plain colored" title="CSS3"></i>
+        </div>
+      </section>
+
+      <!-- OPEN SCIENCE + DIRECTION -->
+      <section id="open-science" aria-labelledby="open-science-heading">
+        <h2 id="open-science-heading" class="section-title">Open science &amp; direction</h2>
+        <div class="prose">
+          <p>
+            Progress in medical AI depends on more than more capable models. It depends on
+            transparent methods, reproducible experiments, honest evaluation, and collaboration
+            across medicine, computer science, and engineering. I try to make my work reproducible
+            and available — through code, documentation, and openly accessible research outputs.
+          </p>
+          <p>
+            I am building a research career in AI for medicine, in environments where clinical
+            knowledge, machine learning, and systems engineering meet. The long-term goal is
+            medical AI that is:
+          </p>
+          <ul>
+            <li><strong>Capable</strong> enough to be useful.</li>
+            <li><strong>Transparent</strong> enough to be understood.</li>
+            <li><strong>Calibrated</strong> enough to be trusted — and to be doubted — at the right times.</li>
+            <li><strong>Robust</strong> enough to survive contact with a real clinic.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="contact" id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading" class="section-title" style="justify-content:center;">Collaboration</h2>
+        <p class="prose" style="text-align:center; margin:0;">
+          I am open to collaboration on medical AI, machine learning for healthcare, medical
+          imaging, large language models, trustworthy and explainable AI, uncertainty
+          quantification, clinical decision support, and AI agents in healthcare systems.
+          If your work overlaps with any of these, I would be glad to hear from you.
+        </p>
 
         <div class="links" role="list">
           <a class="cta" role="listitem" href="https://orcid.org/0000-0002-1681-0994" aria-label="ORCID"><i class="fa-brands fa-orcid"></i> ORCID</a>
-          <a class="cta" role="listitem" href="https://scholar.google.com/citations?hl=en&user=R9sqUqQAAAAJ" aria-label="Google Scholar"><i class="fa-solid fa-graduation-cap"></i> Google Scholar</a>
-          <a class="cta" role="listitem" href="https://www.linkedin.com/in/aref-mahjoubfar-306a9719b/?trk=public-profile-join-page" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a class="cta" role="listitem" href="https://scholar.google.com/citations?hl=en&amp;user=R9sqUqQAAAAJ" aria-label="Google Scholar"><i class="fa-solid fa-graduation-cap"></i> Google Scholar</a>
+          <a class="cta" role="listitem" href="https://www.linkedin.com/in/aref-mahjoubfar-306a9719b/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
           <a class="cta" role="listitem" href="mailto:arefmahjoub1999@email.com" aria-label="Email"><i class="fa-solid fa-envelope"></i> Email</a>
           <a class="cta" role="listitem" href="https://github.com/ArefMahjoubfar" aria-label="GitHub"><i class="fa-brands fa-github"></i> Github</a>
         </div>
@@ -541,39 +981,3 @@
   </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
